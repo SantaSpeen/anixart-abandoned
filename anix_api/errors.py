@@ -3,3 +3,6 @@ class AnixInitError(Exception):
 
 class AnixAuthError(Exception):
     pass
+
+class AnixAPIRequestError(Exception):
+    pass

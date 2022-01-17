@@ -2,10 +2,14 @@ import requests
 from .request_handler import AnixRequestsHandler
 from .errors import AnixAuthError, AnixInitError
 
-SING_UP = "auth/signUp"
-SING_UP_VERIFY = "auth/verify"
-SING_IN = "auth/signIn"
+# POST
+SING_UP = "/auth/signUp"
+SING_UP_VERIFY = "/auth/verify"
+SING_IN = "/auth/signIn"
 FIREBASE = "/auth/firebase"
+
+# GET
+CHANGE_PASSWORD = "/profile/preference/password/change"
 
 def check_code(c):
 	if c==0:
@@ -29,7 +33,6 @@ class AnixAuth(AnixRequestsHandler):
 		return ready
 
 	def sing_in(self):
-		type(self.user)
 		payload = {"login": self.user.login, "password": self.user.password}
 		res  = self.post(SING_IN, payload)
 		
@@ -67,3 +70,7 @@ class AnixAuth(AnixRequestsHandler):
 
 	def firebase(self, payload={}):
 		return self._parse_response(self.post(FIREBASE, payload))
+
+	def change_password(self, old, new, token):
+		return self.get(CHANGE_PASSWORD, {"current": old, "new": new, "token": token})
+

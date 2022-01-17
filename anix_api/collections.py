@@ -7,4 +7,4 @@ THROWN = "/profileList/all/5/" # + page
 HISTORY = "/history/" # + page
 FAVORITE = "favorite/all/"  # + page
 
-RELEASE = "https://api.anixart.tv/release/" # + release id
+RELEASE = "/release/" # + release id
