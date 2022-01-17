@@ -2,9 +2,9 @@
 
 ### Use:
 ```python3
-from anix_api import Anixanix_userAccount, AnixAPI
+from anix_api import AnixUserAccount, AnixAPI
 
-anix_anix_user = Anixanix_userAccount(login="", password="", need_reg=False, mail="your@mail.tv")
+anix_anix_user = AnixUserAccount(login="", password="", need_reg=False, mail="your@mail.tv")
 anix = AnixAPI(anix_anix_user)
 
 print(f"Token: {anix.me.get_token()}; ID: {anix.me.get_id()}")
