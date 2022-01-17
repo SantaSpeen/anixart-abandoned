@@ -1,5 +1,5 @@
-from anix_api import AnixAuth, AnixUserAccount, AnixAPI
+from anix_api import AnixUserAccount, AnixAPI
 
-user = AnixUserAccount(login="##", password="##")
+user = AnixUserAccount("##", "##")
 anix = AnixAPI(user)
 print(f"Token: {anix.user.get_token()}; ID: {anix.user.get_id()}")

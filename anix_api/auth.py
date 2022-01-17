@@ -20,7 +20,7 @@ class AnixAuth(AnixRequestsHandler):
 
 	def _parse_response(self, data):
 		ready = data.json()
-		ready.update({"status_code": res.status_code})
+		ready.update({"status_code": data.status_code})
 
 		if not check_code(ready['code']):
 			print(res.text+"\n\n")
@@ -33,36 +33,37 @@ class AnixAuth(AnixRequestsHandler):
 		payload = {"login": self.user.login, "password": self.user.password}
 		res  = self.post(SING_IN, payload)
 		
-		ready = res.json()
-		ready.update({"status_code": res.status_code})
+		ready = self._parse_response(res)
 
-		if not check_code(ready['code']):
-			print(res.text+"\n\n")
-			raise Exception("auth not ok")
-
-		self.id = ready["profile"]["id"]
 		self.user.id = ready["profile"]["id"]
-		self.token = ready["profileToken"]["token"]
 		self.user.token = ready["profileToken"]["token"]
 
 		return ready
 
-	def sing_up(self, email):
-		raise AnixInitError("AnixAuth.sing_up() - Not ready for use.")
+	def sing_up(self):
+		email = self.user.mail
 		payload = {"login": self.user.login, "password": self.user.password, "email": email}
-		pes1 = self.post(SING_UP, payload).json()
+		res1 = self.post(SING_UP, payload).json()
 
 		print(f"Code sended to {email}.")
 		code = input("Please input code from mail: ")
-		res = self.sing_up_verufy(code, pes1["hash"], True)
-		return self._parse_response(res)
+		res2 = self.sing_up_verufy(code, res1["hash"], email, True)
+		ready = self._parse_response(res2)
 
-	def sing_up_verufy(self, code, _hash, local=False):
+		self.user.id = ready["profile"]["id"]
+		self.user.token = ready["profileToken"]["token"]
+
+	def sing_up_verufy(self, code, _hash, email, local=False):
 		payload = {"login": self.user.login, "password": self.user.password, "email": email, "code": code, "hash": _hash}
 		res = self.post(SING_UP_VERIFY, payload)
+		res_json = res.json()
+		if res_json['code'] != 0:
+			print("Code not right.")
+			code = input("Pls input code again: ")
+			return self.sing_up_verufy(code, _hash, email, True)
 		if local:
 			return res
-		return res.json()
+		return 
 
 	def firebase(self, payload={}):
 		return self._parse_response(self.post(FIREBASE, payload))
