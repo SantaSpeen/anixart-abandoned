@@ -1,7 +1,7 @@
 from .request_handler import AnixRequestsHandler
 
 # _get
-PROFILE = "profile/{}" # + profile id
+PROFILE = "/profile/{}" # + profile id
 PROFILE_NICK_HISTORY = "/profile/login/history/all/{}/{}" # profile id / page
 
 FRIENDS =  "/profile/friend/all/{}/{}"# profile id / page
@@ -86,9 +86,7 @@ class AnixUsersEdit(AnixProfileBase):
 class AnixUsers(AnixProfileBase):
 
 	def get(self, uid=None):
-		if uid == None:
-			uid = self.id
-		uid = str(uid)
+		uid = self._parse_uid(uid)
 		return self._get(PROFILE.format(uid)).json()
 
 	def history(self, uid=None, page=0):
@@ -104,5 +102,5 @@ class AnixProfile(AnixUsers):
 		super(AnixProfile, self).__init__(user)
 		self.friends = AnixUsersFriends(user)
 		self.vote = AnixUsersVote(user)
-		# self.edit = AnixUsersEdit(user)
+		self.edit = AnixUsersEdit(user)
 		

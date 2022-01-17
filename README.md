@@ -4,20 +4,37 @@
 ```python3
 from anix_api import AnixUserAccount, AnixAPI
 
-anix_anix_user = AnixUserAccount(login="", password="", need_reg=False, mail="your@mail.tv")
-anix = AnixAPI(anix_anix_user)
+anix_user = AnixUserAccount("login", "password")
+anix = AnixAPI(anix_user)
 
 print(f"Token: {anix.me.get_token()}; ID: {anix.me.get_id()}")
 
+profile = anix.profile.get()['profile']
+nick = profile['login']
+status = profile['status']
+vk = profile['vk_page']
+tg = profile['tg_page']
+inst = profile['inst_page']
+tt = profile['tt_page']
+reg_date = profile['register_date']
+
+print(f"Nick: {nick}\nStatus: {status}\nVk: {vk}\nTg: {tg}\nInst: {inst}\nTt: {tt}\nRegister date: {reg_date}")
 ```
 
 ### Ready now:
 
-uid - User Id
+uid - User Id, default: self.
+page - Page if data, default: 0.
+
+* Me (class with login data): 
+	- login -> anix.me.get_login()
+	- password -> anix.me.get_password()
+	- token -> anix.me.get_token()
+	- id -> anix.me.get_id()
 
 * Auth:
-	- Sing In -> Do not use this metod. Programm auto singing in.
-	- Sing Up -> Do not use this metod. Programm auto singing up.
+	- Sing In -> Do not use this metod. Lib auto singing in.
+	- Sing Up -> Do not use this metod. Lib auto singing up. Need real email!
 	- Firebase -> anix.auth.firebase()
 
 * Profile:
@@ -35,6 +52,6 @@ uid - User Id
 		* voted -> anix.profile.vote.voted(uid, page)
 		* unvoted -> anix.profile.vote.unvoted(page)
 	- edit: 
-		* avatar -> Nothink work.
-		* status -> Nothink work.
-		* social -> Nothink work.
+		* status -> anix.profile.edit.status(text)
+		* social -> anix.profile.edit.social(instId, tgId, vkId, ttId)
+		* avatar -> fixing.
