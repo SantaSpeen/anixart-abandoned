@@ -23,6 +23,7 @@ uid - User Id
 * Profile:
 	- get -> anix.profile.get(uid)
 	- history  -> anix.profile.history(uid, page)
+	- history  -> anix.profile.blocklist(page)
 	- friends: 
 		* get -> anix.profile.friends.get(uid, page)
 		* incoming -> anix.profile.friends.incoming()
@@ -34,4 +35,6 @@ uid - User Id
 		* voted -> anix.profile.vote.voted(uid, page)
 		* unvoted -> anix.profile.vote.unvoted(page)
 	- edit: 
-		* -
+		* avatar -> Nothink work.
+		* status -> Nothink work.
+		* social -> Nothink work.

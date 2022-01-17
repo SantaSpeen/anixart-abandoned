@@ -13,6 +13,8 @@ FRIENDS_REMOVE = "/profile/friend/request/remove/{}" # profile id
 VOTE_VOTED = "/profile/vote/release/voted/{}/{}" # profile id / page
 VOTE_UNVOTED = "/profile/vote/release/unvoted/{}" # page
 
+BLOCKLIST = "/profile/blocklist/all/{}" # page
+
 # POST
 EDIT_AVATAR = "/profile/preference/avatar/edit"
 EDIT_STATUS = "/profile/preference/status/edit"
@@ -93,11 +95,14 @@ class AnixUsers(AnixProfileBase):
 		uid, page = self._parse_args(uid, page)
 		return self._get(PROFILE_NICK_HISTORY.format(uid, page)).json()
 
+	def blocklist(self, page=0):
+		return self._get(PROFILE_NICK_HISTORY.format(str(page))).json()
+
 class AnixProfile(AnixUsers):
 	def __init__(self, user):
 		token = user.token
 		super(AnixProfile, self).__init__(user)
 		self.friends = AnixUsersFriends(user)
 		self.vote = AnixUsersVote(user)
-		self.edit = AnixUsersEdit(user)
+		# self.edit = AnixUsersEdit(user)
 		
