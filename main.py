@@ -1,7 +1,5 @@
 from anix_api import AnixAuth, AnixUserAccount, AnixAPI
 
-user = AnixUserAccount(login="SanitAni", password="MaximPassword")
+user = AnixUserAccount(login="##", password="##")
 anix = AnixAPI(user)
-anix.auth.sing_in()
 print(f"Token: {anix.user.get_token()}; ID: {anix.user.get_id()}")
-

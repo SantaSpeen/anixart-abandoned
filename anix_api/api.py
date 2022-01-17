@@ -28,7 +28,11 @@ class AnixAPIRequests:
 	def __init__(self, user):
 		if not isinstance(user, AnixUserAccount):
 			raise AnixInitError('Use class "AnixUserAccount" for user.')
-		if user.token==None or user.id==None:
-			raise AnixInitError('Use "an.auth.sing_in()".')
-		self.user = user
+
 		self.auth = AnixAuth(user)
+
+		if user.token==None:
+			self.auth.sing_in()
+
+		self.user = user
+
