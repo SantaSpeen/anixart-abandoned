@@ -40,7 +40,7 @@ page - Page if data, default: 0.
 * Profile:
 	- get -> anix.profile.get(uid)
 	- history  -> anix.profile.history(uid, page)
-	- history  -> anix.profile.blocklist(page)
+	- blocklist  -> anix.profile.blocklist(page)
 	- friends: 
 		* get -> anix.profile.friends.get(uid, page)
 		* incoming -> anix.profile.friends.incoming()
@@ -54,4 +54,80 @@ page - Page if data, default: 0.
 	- edit: 
 		* status -> anix.profile.edit.status(text)
 		* social -> anix.profile.edit.social(instId, tgId, vkId, ttId)
-		* avatar -> fixing.
+
+### In plans:
+
+* Profile:
+	- list:
+		* get:
+			- watching
+			- plan
+			- watched
+			- postponed
+			- thrown
+			- history
+			- favorite 
+			- collections
+		* add
+	- edit:
+		* avatar
+		* notification:
+			- episode
+			- comment
+			- status
+			- voice (type)
+			- collection
+
+* Release:
+	- get
+	- vote:
+		* add
+		* delite
+	- comment:
+		* get 
+		* vote
+		* add
+	- random
+
+* Collections:
+	- get
+	- my:
+		* get
+		* create
+		* edit
+		* delite
+	- favorite:
+		* get
+		* add
+		* delite
+	- comment:	
+		* get
+		* add
+		* edit
+		* votes
+		* delite
+
+* Discover:
+	- interesting
+	- watching
+	- discussing
+	- comments
+	- schedule
+
+* Filter
+	- get
+
+* Voice:
+	- get
+
+* Episode:
+	- get:
+		- voice
+		- player
+		- video
+	- set:
+		- watch
+		- unwatch
+
+* Notification:
+	- In work.
