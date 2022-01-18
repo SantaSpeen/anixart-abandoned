@@ -9,6 +9,9 @@
 * Contacts: [Vk](https://vk.com/l.vindeta "Vk"), [Tg](https://t.me/id01234 "Tg").
 
 ### Use:
+
+`pip3 install requests`
+
 ```python3
 from anixart import AnixUserAccount, AnixAPI
 
@@ -141,4 +144,3 @@ page - Page if data, default: 0.
 
 * Notification:
 	- In work.
- 
