@@ -1,47 +1,62 @@
+# -*- coding: utf-8 -*-
+
+"""
+This module implements the API requests.
+:copyright: (c) 2022 by Maxim Khomutov.
+:license: MIT
+"""
+
 import requests
 import random
 import json
 from .errors import AnixAPIRequestError
 from .methods import API_URL
+from .__version__ import __version__, __build__
 
 
 class AnixRequestsHandler:
 
-	def __init__(self, token=None):
-		self.s = requests.Session()
-		self.s.headers = {'User-Agent': 'AnixartAPIWrapper/0.2.2-432 (Linux; Android 12; SantaSpeen anixAPI Build/432)'}
-		self.token=token
-	
-	def post(self, method, payload={}, is_json=False):
+    def __init__(self, token=None):
+        self.s = requests.Session()
+        self.s.headers = {'User-Agent': 'AnixartAPIWrapper/{__version__}-{__build__} (Linux; Android 12; SantaSpeen anixAPI Build/{__build__})'}
+        self.token = token
 
-		tok = ""
-		if payload.get("token")==None:
-			if self.token!=None:
-				payload.update({"token": self.token}) 
-				tok = "?token="+self.token
+    def post(self, method, payload=None, is_json=False, **kwargs):
+        if payload is None:
+            payload = {}
 
-		if is_json:
-			self.s.headers.update({"Content-Type": "application/json; charset=UTF-8"})
-			self.s.headers.update({"Content-Length": str(len(str(payload)))})
-			res = self.s.post(API_URL+method+tok, json=payload)
-		else:
-			res = self.s.post(API_URL+method+tok, data=payload)
+        tok = ""
+        if payload.get("token") is None:
+            if self.token is not None:
+                payload.update({"token": self.token})
+                tok = "?token=" + self.token
 
-		if res.json().get("error"):
-			raise AnixAPIRequestError(f"\n==========ANIX API ERROR==========\nURL: POST {res.url};\nDATA: {payload}\nHEADERS: {self.s.headers}\nError: {res.json().get('error')}\n")
+        if is_json:
+            self.s.headers.update({"Content-Type": "application/json; charset=UTF-8"})
+            self.s.headers.update({"Content-Length": str(len(str(payload)))})
+            res = self.s.post(API_URL + method + tok, json=payload, **kwargs)
+        else:
+            res = self.s.post(API_URL + method + tok, data=payload, **kwargs)
 
-		self.s.headers["Content-Type"] = None
-		self.s.headers["Content-Length"] = None
+        if res.json().get("error"):
+            raise AnixAPIRequestError(f"\n\nURL: POST {res.url};\nDATA: {payload}\nError: {res.json().get('error')}\n")
 
-		return res
+        self.s.headers["Content-Type"] = None
+        self.s.headers["Content-Length"] = None
 
-	def get(self, method, payload={}):
-		if payload.get("token")==None:
-			if self.token!=None:
-				payload.update({"token": self.token}) 
-		res = self.s.get(API_URL+method, params=payload)
+        return res
 
-		if res.json().get("error"):
-			raise AnixAPIRequestError(f"\n==========ANIX API ERROR==========\nURL: GET {res.url};\nDATA: {payload}\nHEADERS: {self.s.headers}\nError: {res.json().get('error')}\n")
+    def get(self, method, payload=None, **kwargs):
+        if payload is None:
+            payload = {}
 
-		return res
+        if payload.get("token") is None:
+            if self.token is not None:
+                payload.update({"token": self.token})
+
+        res = self.s.get(API_URL + method, params=payload, **kwargs)
+
+        if res.json().get("error"):
+            raise AnixAPIRequestError(f"\n\nURL: GET {res.url};\nDATA: {payload}\nError: {res.json().get('error')}\n")
+
+        return res

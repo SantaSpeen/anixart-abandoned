@@ -1,50 +1,67 @@
+# -*- coding: utf-8 -*-
+
 from .auth import AnixAuth
 from .request_handler import AnixRequestsHandler
 from .errors import AnixInitError, AnixAuthError
 from .profile import AnixProfile
 
+
 class AnixUserAccount:
-	def __init__(self, login, password, need_reg=False, mail=None, config_file="anixart_login.json"):
-		self.login = login
-		self.password = password
-		if not isinstance(login, str) or not isinstance(password, str):
-			raise AnixAuthError("Use normal auth data. In string.")
-		self.token = None
-		self.id = None
+    def __init__(self, login, password, need_reg=False, mail=None, config_file="anixart_login.json"):
+        """
+        :param login: Anixart nick
+        :param password: Anixart password
+        :param need_reg: If use use new account, set True
+        :param mail: Real email for registration.
+        :param config_file: Patch to anixart login data.
+        :return: :class:`AnixUserAccount <anixart.api.AnixUserAccount>` object
+        """
 
-		self.need_reg = need_reg
-		if need_reg:
-			if mail==None:
-				raise AnixAuthError("Pls input mail.")
-		self.mail = mail
-		self.config_file = config_file
+        self.login = login
+        self.password = password
+        if not isinstance(login, str) or not isinstance(password, str):
+            raise AnixAuthError("Use normal auth data. In string.")
+        self.token = None
+        self.id = None
 
-	def get_login(self):
-		return self.login
+        self.need_reg = need_reg
+        if need_reg:
+            if mail is None:
+                raise AnixAuthError("Pls input mail.")
+        self.mail = mail
+        self.config_file = config_file
 
-	def get_password(self):
-		return self.password
+    def get_login(self):
+        return self.login
 
-	def get_token(self):
-		return self.token
+    def get_password(self):
+        return self.password
 
-	def get_id(self):
-		return self.id 
+    def get_token(self):
+        return self.token
+
+    def get_id(self):
+        return self.id
+
 
 class AnixAPIRequests:
 
-	def __init__(self, user):
-		if not isinstance(user, AnixUserAccount):
-			raise AnixInitError('Use class "AnixUserAccount" for user.')
+    def __init__(self, user):
+        """
+        :param user: :class:`AnixUserAccount <anixart.api.AnixUserAccount>` object
+        :return: :class:`AnixAPIRequests <anixart.api.AnixAPIRequests>` object
+        """
 
-		self.auth = AnixAuth(user)
+        if not isinstance(user, AnixUserAccount):
+            raise AnixInitError('Use class "AnixUserAccount" for user.')
 
-		if user.need_reg:
-			self.auth.sing_up(user.mail)
-		else:
-			if user.token==None:
-				self.auth.sing_in()
+        self.auth = AnixAuth(user)
 
-		self.me = user
-		self.profile = AnixProfile(user)
+        if user.need_reg:
+            self.auth.sing_up(user.mail)
+        else:
+            if user.token is None:
+                self.auth.sing_in()
 
+        self.me = user
+        self.profile = AnixProfile(user)

@@ -1,5 +1,5 @@
 # anixart
-#### Non-offical Anixart API wrapper. 
+#### Non-official Anixart API wrapper. 
 * Description:
 	* **EN**: Wrapper for using the anixart API, the best application for watching anime in the CIS countries. From myself I can say that the library was created for informational purposes only. I do not advise you to do such things as cheat likes,have respect for the project. If complaints are received from the project administration, then access to the repository will be limited.
 	* **RU**: Враппер для использования anixart API, наилучшего приложения для просмотра аниме на территории стран СНГ.  От себя могу сказать, что библиотека создана лишь для ознакомления. Не советую заниматься такимим вещами как накрутка лайков, имейте уважение к проекту. Если поступят жалобы от администрации проекта, то доступ к репозиторию будет ограничен.
@@ -45,8 +45,9 @@ page - Page if data, default: 0.
 	- id -> anix.me.get_id()
 
 * Auth:
-	- Sing In -> Do not use this metod. Lib auto singing in.
-	- Sing Up -> Do not use this metod. Lib auto singing up. Need real email!
+	- Sing In -> Do not use this method. Lib auto singing in.
+	- Sing Up -> Do not use this method. Lib auto singing up. Need real email!
+	- Sing Up -> Do not use this method. Lib auto singing up. Need real email!
 	- Firebase -> `anix.auth.firebase()`
 	- Change password -> `anix.auth.change_password(old_pass, new_pass)`
 
@@ -108,17 +109,17 @@ page - Page if data, default: 0.
 		* get
 		* create
 		* edit
-		* delite
+		* delete
 	- favorite:
 		* get
 		* add
-		* delite
+		* delete
 	- comment:	
 		* get
 		* add
 		* edit
 		* votes
-		* delite
+		* delete
 
 * Discover:
 	- interesting

@@ -1,5 +1,11 @@
+# -*- coding: utf-8 -*-
+
 from .request_handler import AnixRequestsHandler
-from .methods import 
+from .methods import COLLECTION, COLLECTION_RELEASES, COLLECTION_LIST
+
+from .methods import COLLECTION_COMMENTS, COLLECTION_COMMENTS_ADD, COLLECTION_COMMENTS_VOTE, COLLECTION_COMMENTS_VOTES
+from .methods import COLLECTION_COMMENTS_REPLIES, COLLECTION_COMMENTS_EDIT, COLLECTION_COMMENTS_DELETE
+
 
 class AnixCollectionBase(AnixRequestsHandler):
 	def __init__(self, user):
@@ -9,7 +15,7 @@ class AnixCollectionBase(AnixRequestsHandler):
 		self._post = super().post
 
 	def _parse_uid(self, uid):
-		if uid == None:
+		if uid is None:
 			uid = self.id
 		uid = str(uid)
 		return uid
@@ -18,6 +24,7 @@ class AnixCollectionBase(AnixRequestsHandler):
 		uid = self._parse_uid(uid)
 		page = str(page)
 		return [uid, page]
+
 
 class AnixCollection(AnixCollectionBase):
 
