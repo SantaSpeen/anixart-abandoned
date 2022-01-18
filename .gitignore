@@ -130,3 +130,4 @@ dmypy.json
 
 # AnixartAPI login
 anixart_login.json
+.pypirc
