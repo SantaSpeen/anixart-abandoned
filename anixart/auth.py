@@ -48,11 +48,17 @@ class AnixAuth(AnixRequestsHandler):
         config = self._open_config()
 
         if config:
-            self.user.id = config.get("id")
-            self.user.token = config.get("token")
-            if not self.get(PROFILE.format(self.user.id), payload={"token": self.user.token}).json().get(
-                    "is_my_profile", ):
+
+            uid = config.get("id")
+            token = config.get("token")
+            if not self.get(PROFILE.format(uid),
+                            payload={"token": token}).json().get("is_my_profile") or \
+                    self.user.login != config.get("login"):
                 print("[ANIXART API] Invalid config file. Re login.")
+
+                self.user.id = uid
+                self.user.token = token
+
             else:
                 return config
 
@@ -67,7 +73,7 @@ class AnixAuth(AnixRequestsHandler):
         self.user.id = uid
         self.user.token = token
 
-        self._save_config({"id": uid, "token": token})
+        self._save_config({"id": uid, "token": token, "login": self.user.login})
 
         return ready
 
@@ -87,7 +93,7 @@ class AnixAuth(AnixRequestsHandler):
         self.user.id = uid
         self.user.token = token
 
-        self._save_config({"id": uid, "token": token})
+        self._save_config({"id": uid, "token": token, "login": self.user.login})
 
         return ready
 
