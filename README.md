@@ -1,6 +1,7 @@
-# anixart - Anixart API project. (non-offical)
-
-* Endpoints: []()
+# anixart
+#### Non-offical Anixart API wrapper. 
+* Endpoints: [here](https://github.com/SantaSpeen/anixart/blob/master/anixart/methods.py)
+* Contacts: [Vk](https://vk.com/ivan_samoi "Vk"), [Tg](https://t.me/id01234 "Tg").
 
 ### Use:
 ```python3
