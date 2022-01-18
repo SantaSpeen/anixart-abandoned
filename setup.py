@@ -11,16 +11,15 @@ requires = ['requests']
 
 # 'setup.py publish' shortcut.
 if sys.argv[-1] == 'publish':
-    os.system('python setup.py sdist bdist_wheel')
-    os.system('twine upload dist/*')
+    os.system('py -m build')
+    os.system('py -m twine upload --repository pypi dist/*')
     sys.exit()
 
 about = {}
-patch = here+'anixart/__version__.py'
-with open(patch, 'r', 'utf-8') as f:
+with open(os.path.join(here, 'anixart', '__version__.py'), 'r', encoding='utf-8') as f:
     exec(f.read(), about)
 
-with open('README.md', 'r', 'utf-8') as f:
+with open('README.md', 'r', encoding='utf-8') as f:
     readme = f.read()
 
 setup(

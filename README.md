@@ -10,7 +10,7 @@
 
 ### Use:
 
-`pip3 install requests`
+`pip install anixart`
 
 ```python3
 from anixart import AnixUserAccount, AnixAPI
