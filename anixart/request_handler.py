@@ -7,9 +7,10 @@ This module implements the API requests.
 """
 
 import requests
+
+from .__version__ import __version__, __build__
 from .errors import AnixAPIRequestError
 from .methods import API_URL
-from .__version__ import __version__, __build__
 
 
 class AnixRequestsHandler:
@@ -36,8 +37,8 @@ class AnixRequestsHandler:
         else:
             res = self.s.post(API_URL + method + tok, data=payload, **kwargs)
 
-        if res.json().get("error"):
-            raise AnixAPIRequestError(f"\n\nURL: POST {res.url};\nDATA: {payload}\nError: {res.json().get('error')}\n")
+        if res.json().get("error", ):
+            raise AnixAPIRequestError(f"\n\nURL: POST {res.url};\nDATA: {payload}\nError: {res.json().get('error', )}\n")
 
         self.s.headers["Content-Type"] = None
         self.s.headers["Content-Length"] = None
@@ -54,7 +55,7 @@ class AnixRequestsHandler:
 
         res = self.s.get(API_URL + method, params=payload, **kwargs)
 
-        if res.json().get("error"):
-            raise AnixAPIRequestError(f"\n\nURL: GET {res.url};\nDATA: {payload}\nError: {res.json().get('error')}\n")
+        if res.json().get("error", ):
+            raise AnixAPIRequestError(f"\n\nURL: GET {res.url};\nDATA: {payload}\nError: {res.json().get('error', )}\n")
 
         return res

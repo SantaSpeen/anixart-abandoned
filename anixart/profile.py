@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 
-from .request_handler import AnixRequestsHandler
-
-# Profile methods
-from .methods import PROFILE, PROFILE_NICK_HISTORY, BLOCKLIST
-# Friends methods
-from .methods import FRIENDS, FRIENDS_RQ_IN, FRIENDS_RQ_OUT, FRIENDS_SEND, FRIENDS_REMOVE
-# Vote methods
-from .methods import VOTE_VOTED, VOTE_UNVOTED
 # Edit methods
 from .methods import EDIT_STATUS, EDIT_SOCIAL, EDIT_AVATAR
+# Friends methods
+from .methods import FRIENDS, FRIENDS_RQ_IN, FRIENDS_RQ_OUT, FRIENDS_SEND, FRIENDS_REMOVE
+# Profile methods
+from .methods import PROFILE, PROFILE_NICK_HISTORY
+from .methods import VOICE
+# Vote methods
+from .methods import VOTE_VOTED, VOTE_UNVOTED
+from .request_handler import AnixRequestsHandler
 
 
 class AnixProfileBase(AnixRequestsHandler):
@@ -101,3 +101,6 @@ class AnixProfile(AnixUsers):
         self.friends = AnixUsersFriends(user)
         self.vote = AnixUsersVote(user)
         self.edit = AnixUsersEdit(user)
+
+    def _voice(self):
+        return self._get(VOICE).json()

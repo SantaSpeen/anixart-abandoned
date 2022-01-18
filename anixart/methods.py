@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+class AnixComment:
+    UP = 2
+    DOWN = 1
+
 API_URL = "https://api.anixart.tv"
 
 ################   AUTH   ################
@@ -44,14 +48,20 @@ COLLECTION_RELEASES = "/collection/{}/releases/{}"  # collection id / page
 COLLECTION_LIST = "/collection/all/{}"  # page
 
 COLLECTION_COMMENTS = "/collection/comment/all/{}/{}"  # collection id / page
-COLLECTION_COMMENTS_ADD = "/collection/comment/add/{}"  # collection id req: {"message": msg, "parentCommentId": pcmi, "replyToProfileId": rtpi, "spoiler": false}
 COLLECTION_COMMENTS_VOTE = "/collection/comment/vote/{}/{}"  # collection comment id / mark (1, 2)
 COLLECTION_COMMENTS_VOTES = "/collection/comment/votes/{}/{}"  # collection comment id / page
 COLLECTION_COMMENTS_REPLIES = "/collection/comment/replies/{}/{}"  # collection comment id / page
-COLLECTION_COMMENTS_EDIT = "/collection/comment/edit/{}"  # collection comment id req: {"message": msg, "spoiler": false}
 COLLECTION_COMMENTS_DELETE = "/collection/comment/delete/{}"  # collection comment id
 
+# POST
+COLLECTION_SEARCH = "/search/collections/{}"  # page req: { "query": text, "searchBy": 0}
+
+COLLECTION_COMMENTS_ADD = "/collection/comment/add/{}"  # collection id req: {"message": msg, "parentCommentId": pcmi, "replyToProfileId": rtpi, "spoiler": false}
+COLLECTION_COMMENTS_EDIT = "/collection/comment/edit/{}"  # collection comment id req: {"message": msg, "spoiler": false}
+
 ################         ################
+
+VOICE = "/type/all"
 
 WATCHING = "/profile/list/all/1/{}"  # + page
 # "/profile/list/all/1796506/1/{}"

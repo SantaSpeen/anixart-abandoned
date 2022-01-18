@@ -5,19 +5,19 @@ anix = AnixAPI(anix_user)
 
 
 def main(uid):
-    profile = anix.profile.get(uid=uid)['profile']
-    if profile == None:
+    profile = anix.profile.get(uid)['profile']
+    if profile is None:
         print("Id is incorrect")
         return
 
-    nick = profile.get('login')
-    uid = profile.get('id')
-    status = profile.get('status')
-    vk = profile.get('vk_page')
-    tg = profile.get('tg_page')
-    inst = profile.get('inst_page')
-    tt = profile.get('tt_page')
-    reg_date = profile.get('register_date')
+    nick = profile.get('login', )
+    uid = profile.get('id', )
+    status = profile.get('status', )
+    vk = profile.get('vk_page', )
+    tg = profile.get('tg_page', )
+    inst = profile.get('inst_page', )
+    tt = profile.get('tt_page', )
+    reg_date = profile.get('register_date', )
 
     print(
         f"\nNick: {nick}\n" +

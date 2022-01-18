@@ -33,40 +33,61 @@ print(f"Nick: {nick}\nStatus: {status}\nVk: {vk}\nTg: {tg}\nInst: {inst}\nTt: {t
 ```
 
 ### Ready now:
-
-uid - User Id, default: self.
-page - Page if data, default: 0.
+* uid - int; User Id, default: self.
+* page - int; Page if data, default: 0.
+* cid - int; Collection id.
+* ccmid - int; Collection comment id.
+* query - str; query text.
+* message - str; Comment text.
+* spoiler - bool; Comment spoiler, default: False.
+* mark - int; Comment vote. Use `AnixComment.UP` or `AnixComment.DOWN`
 
 
 * Me (class with login data): 
-	- login -> anix.me.get_login()
-	- password -> anix.me.get_password()
-	- token -> anix.me.get_token()
-	- id -> anix.me.get_id()
+    - login -> `anix.me.get_login()`
+    - password -> `anix.me.get_password()`
+    - token -> `anix.me.get_token()`
+    - id -> `anix.me.get_id()`
 
-* Auth:
-	- Sing In -> Do not use this method. Lib auto singing in.
-	- Sing Up -> Do not use this method. Lib auto singing up. Need real email!
-	- Firebase -> `anix.auth.firebase()`
-	- Change password -> `anix.auth.change_password(old_pass, new_pass)`
+* Auth `anix.auth`:
+    - Sing In -> Do not use this method. Lib auto singing in.
+    - Sing Up -> Do not use this method. Lib auto singing up. Need real email!
+    - Firebase -> `anix.auth.firebase()`
+    - Change password -> `anix.auth.change_password(old_pass, new_pass)`; Change password.
 
-* Profile:
-	- get -> `anix.profile.get(uid)`
-	- history  -> `anix.profile.history(uid, page)`
-	- blocklist  -> `anix.profile.blocklist(page)`
-	- friends: 
-		* get -> `anix.profile.friends.get(uid, page)`
-		* incoming -> `anix.profile.friends.incoming()`
-		* outgoing -> `anix.profile.friends.outgoing()`
-		* add -> `anix.profile.friends.add(uid)`
-		* accept -> `anix.profile.friends.accept(uid)`
-		* remove -> `anix.profile.friends.remove(uid)`
-	- vote: 
-		* voted -> `anix.profile.vote.voted(uid, page)`
-		* unvoted -> `anix.profile.vote.unvoted(page)`
-	- edit: 
-		* status -> `anix.profile.edit.status(text)`
-		* social -> `anix.profile.edit.social(instId, tgId, vkId, ttId)`
+* Profile `anix.profile`:
+    - get -> `anix.profile.get(uid)`; Get profile.
+    - history  -> `anix.profile.history(uid, page)`; Get nickname history.
+    - blocklist  -> `anix.profile.blocklist(page)`; Get blocked profiles.
+    - friends `anix.profile.friends`: 
+        * get -> `anix.profile.friends.get(uid, page)`; Get friends.
+        * incoming -> `anix.profile.friends.incoming()`; Get incoming friend referrals.
+        * outgoing -> `anix.profile.friends.outgoing()`; Get outgoing friend referrals.
+        * add -> `anix.profile.friends.add(uid)`; Add friend.
+        * accept -> `anix.profile.friends.accept(uid)`; Accept friend.
+        * remove -> `anix.profile.friends.remove(uid)`; Remove friend.
+    - vote `anix.profile.vote`: 
+        * voted -> `anix.profile.vote.voted(uid, page)`; Anime that was voted.
+        * unvoted -> `anix.profile.vote.unvoted(page)`; Anime not upvoted.
+    - edit `anix.profile.edit`: 
+        * status -> `anix.profile.edit.status(text)`; Edit status.
+        * social -> `anix.profile.edit.social(instId, tgId, vkId, ttId)`; Edit social (contacts).
+
+* Collections `anix.coll` or `anix.collection`:
+    - get -> `anix.coll.get(cid)`; Get collection.
+    - list -> `anix.coll.list(page)`; Get recommend list of collections;
+    - releases -> `anix.coll.releases(cid, page)`; Get releases in a collection.
+    - search -> `anix.coll.search(query, page)`; Finding a collection by name.
+    - comments `anix.coll.comments`:
+      * get -> `anix.coll.comments.get(cid, page)`; Get collection comments.
+      * add -> `anix.coll.comments.add(cid, message, parent_comment_id, reply_to_profile_id, spoiler)`; Add comment to collection.
+      * vote -> `anix.coll.comments.vote(ccmid, mark)`; Rate a comment.
+      * votes -> `anix.coll.comments.votes(ccmid, page)`; List of rated.
+      * replies -> `anix.coll.comments.replies(ccmid, page)`; Responses to a comment.
+      * edit -> `anix.coll.comments.edit(ccmid, message, spoiler)`; Edit a comment.
+      * delete -> `anix.coll.comments.delete(ccmid)`; Delete a comment.
+
+* Voice -> `anix.voice()`; See all available voiceovers.
 
 ### In plans:
 
@@ -95,7 +116,7 @@ page - Page if data, default: 0.
 	- get
 	- vote:
 		* add
-		* delite
+		* delete
 	- comment:
 		* get 
 		* vote
@@ -103,7 +124,6 @@ page - Page if data, default: 0.
 	- random
 
 * Collections:
-	- get
 	- my:
 		* get
 		* create
@@ -112,12 +132,6 @@ page - Page if data, default: 0.
 	- favorite:
 		* get
 		* add
-		* delete
-	- comment:	
-		* get
-		* add
-		* edit
-		* votes
 		* delete
 
 * Discover:

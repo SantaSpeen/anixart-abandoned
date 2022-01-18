@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from .auth import AnixAuth
-from .request_handler import AnixRequestsHandler
+from .collections import AnixCollection
 from .errors import AnixInitError, AnixAuthError
 from .profile import AnixProfile
 
@@ -58,10 +58,15 @@ class AnixAPIRequests:
         self.auth = AnixAuth(user)
 
         if user.need_reg:
-            self.auth.sing_up(user.mail)
+            self.auth.sing_up()
         else:
             if user.token is None:
                 self.auth.sing_in()
 
         self.me = user
         self.profile = AnixProfile(user)
+        self.collection = AnixCollection(user)
+        self.coll = self.collection
+        self.voice = self.profile._voice
+
+

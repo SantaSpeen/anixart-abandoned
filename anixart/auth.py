@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import requests
 import json
-from .request_handler import AnixRequestsHandler
-from .errors import AnixAuthError, AnixInitError
+
+from .errors import AnixAuthError
 from .methods import SING_UP, SING_UP_VERIFY, SING_IN, FIREBASE, CHANGE_PASSWORD, PROFILE
+from .request_handler import AnixRequestsHandler
 
 
 def check_code(c):
@@ -51,7 +51,7 @@ class AnixAuth(AnixRequestsHandler):
             self.user.id = config.get("id")
             self.user.token = config.get("token")
             if not self.get(PROFILE.format(self.user.id), payload={"token": self.user.token}).json().get(
-                    "is_my_profile"):
+                    "is_my_profile", ):
                 print("[ANIXART API] Invalid config file. Re login.")
             else:
                 return config

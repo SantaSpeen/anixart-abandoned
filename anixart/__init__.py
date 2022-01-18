@@ -35,7 +35,7 @@ except ImportError:
 
     raise AnixInitError("Please install: 'requests'")
 
-from .api import AnixUserAccount
-from .api import AnixAPIRequests as AnixAPI
-
 from .__version__ import *
+from .api import AnixAPIRequests as AnixAPI
+from .api import AnixUserAccount
+from .methods import AnixComment
