@@ -1,4 +1,4 @@
-from anix_api import AnixUserAccount, AnixAPI
+from anixart import AnixUserAccount, AnixAPI
 
 anix_user = AnixUserAccount("rewrwerwfwef", "APIPassword")
 anix = AnixAPI(anix_user)

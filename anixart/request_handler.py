@@ -2,8 +2,8 @@ import requests
 import random
 import json
 from .errors import AnixAPIRequestError
+from .methods import API_URL
 
-API_URL = "https://api.anixart.tv"
 
 class AnixRequestsHandler:
 

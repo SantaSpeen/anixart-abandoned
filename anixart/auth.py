@@ -2,11 +2,7 @@ import requests
 from .request_handler import AnixRequestsHandler
 from .errors import AnixAuthError, AnixInitError
 
-# POST
-SING_UP = "/auth/signUp"
-SING_UP_VERIFY = "/auth/verify"
-SING_IN = "/auth/signIn"
-FIREBASE = "/auth/firebase"
+from .methods import SING_UP, SING_UP_VERIFY, SING_IN, FIREBASE
 
 # GET
 CHANGE_PASSWORD = "/profile/preference/password/change"

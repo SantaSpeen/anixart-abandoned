@@ -1,24 +1,14 @@
 from .request_handler import AnixRequestsHandler
 
-# _get
-PROFILE = "/profile/{}" # + profile id
-PROFILE_NICK_HISTORY = "/profile/login/history/all/{}/{}" # profile id / page
+# Profile methods
+from .methods import PROFILE, PROFILE_NICK_HISTORY, BLOCKLIST 
+# Friends methods
+from .methods import FRIENDS, FRIENDS_RQ_IN, FRIENDS_RQ_OUT, FRIENDS_SEND, FRIENDS_REMOVE
+# Vote methods
+from .methods import VOTE_VOTED, VOTE_UNVOTED
+# Edit methods
+from .methods import EDIT_STATUS, EDIT_SOCIAL, EDIT_AVATAR
 
-FRIENDS =  "/profile/friend/all/{}/{}"# profile id / page
-FRIENDS_RQ_IN = "/profile/friend/requests/in/last"
-FRIENDS_RQ_OUT = "/profile/friend/requests/out/last"
-FRIENDS_SEND = "/profile/friend/request/send/{}" # profile id
-FRIENDS_REMOVE = "/profile/friend/request/remove/{}" # profile id
-
-VOTE_VOTED = "/profile/vote/release/voted/{}/{}" # profile id / page
-VOTE_UNVOTED = "/profile/vote/release/unvoted/{}" # page
-
-BLOCKLIST = "/profile/blocklist/all/{}" # page
-
-# POST
-EDIT_AVATAR = "/profile/preference/avatar/edit"
-EDIT_STATUS = "/profile/preference/status/edit"
-EDIT_SOCIAL = "/profile/preference/social/edit"
 
 class AnixProfileBase(AnixRequestsHandler):
 	def __init__(self, user):

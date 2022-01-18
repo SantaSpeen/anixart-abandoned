@@ -1,8 +1,10 @@
-# anix_api - Anixart API project. (non-offical)
+# anixart - Anixart API project. (non-offical)
+
+* Endpoints: []()
 
 ### Use:
 ```python3
-from anix_api import AnixUserAccount, AnixAPI
+from anixart import AnixUserAccount, AnixAPI
 
 anix_user = AnixUserAccount("login", "password")
 anix = AnixAPI(anix_user)
@@ -131,3 +133,4 @@ page - Page if data, default: 0.
 
 * Notification:
 	- In work.
+ 
