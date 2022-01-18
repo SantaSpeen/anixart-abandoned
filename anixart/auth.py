@@ -7,12 +7,6 @@ from .methods import SING_UP, SING_UP_VERIFY, SING_IN, FIREBASE, CHANGE_PASSWORD
 from .request_handler import AnixRequestsHandler
 
 
-def check_code(c):
-    if c == 0:
-        return True
-    return False
-
-
 class AnixAuth(AnixRequestsHandler):
 
     def __init__(self, user):
@@ -24,9 +18,14 @@ class AnixAuth(AnixRequestsHandler):
         ready = data.json()
         ready.update({"status_code": data.status_code})
 
-        if not check_code(ready['code']):
+        code = ready['code']
+        if code != 0:
+            if code == 2:
+                raise AnixAuthError("Incorrect login.")
+            if code == 3:
+                raise AnixAuthError("Incorrect password.")
             print(data.text + "\n\n")
-            raise AnixAuthError("auth not ok")
+            raise AnixAuthError("Unknown auth error.")
 
         return ready
 
@@ -51,8 +50,7 @@ class AnixAuth(AnixRequestsHandler):
 
             uid = config.get("id")
             token = config.get("token")
-            if not self.get(PROFILE.format(uid),
-                            payload={"token": token}).json().get("is_my_profile") or \
+            if not self.get(PROFILE.format(uid), payload={"token": token}).json().get("is_my_profile") or \
                     self.user.login != config.get("login"):
                 print("[ANIXART API] Invalid config file. Re login.")
 

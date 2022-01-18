@@ -37,11 +37,11 @@ class AnixRequestsHandler:
         else:
             res = self.s.post(API_URL + method + tok, data=payload, **kwargs)
 
-        if res.json().get("error", ):
-            raise AnixAPIRequestError(f"\n\nURL: POST {res.url};\nDATA: {payload}\nError: {res.json().get('error', )}\n")
+        if res.json().get("error"):
+            raise AnixAPIRequestError(f"\n\nURL: POST {res.url};\nDATA: {payload}\nError: {res.json().get('error')}\n")
 
-        self.s.headers["Content-Type"] = None
-        self.s.headers["Content-Length"] = None
+        self.s.headers["Content-Type"] = ""
+        self.s.headers["Content-Length"] = ""
 
         return res
 
@@ -55,7 +55,7 @@ class AnixRequestsHandler:
 
         res = self.s.get(API_URL + method, params=payload, **kwargs)
 
-        if res.json().get("error", ):
-            raise AnixAPIRequestError(f"\n\nURL: GET {res.url};\nDATA: {payload}\nError: {res.json().get('error', )}\n")
+        if res.json().get("error"):
+            raise AnixAPIRequestError(f"\n\nURL: GET {res.url};\nDATA: {payload}\nError: {res.json().get('error')}\n")
 
         return res

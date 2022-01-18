@@ -144,9 +144,6 @@ print(f"Nick: {nick}\nStatus: {status}\nVk: {vk}\nTg: {tg}\nInst: {inst}\nTt: {t
 * Filter
 	- get
 
-* Voice:
-	- get
-
 * Episode:
 	- get:
 		- voice
