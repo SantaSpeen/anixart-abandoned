@@ -47,7 +47,6 @@ page - Page if data, default: 0.
 * Auth:
 	- Sing In -> Do not use this method. Lib auto singing in.
 	- Sing Up -> Do not use this method. Lib auto singing up. Need real email!
-	- Sing Up -> Do not use this method. Lib auto singing up. Need real email!
 	- Firebase -> `anix.auth.firebase()`
 	- Change password -> `anix.auth.change_password(old_pass, new_pass)`
 

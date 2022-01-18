@@ -7,8 +7,6 @@ This module implements the API requests.
 """
 
 import requests
-import random
-import json
 from .errors import AnixAPIRequestError
 from .methods import API_URL
 from .__version__ import __version__, __build__
@@ -18,7 +16,7 @@ class AnixRequestsHandler:
 
     def __init__(self, token=None):
         self.s = requests.Session()
-        self.s.headers = {'User-Agent': 'AnixartAPIWrapper/{__version__}-{__build__} (Linux; Android 12; SantaSpeen anixAPI Build/{__build__})'}
+        self.s.headers = {'User-Agent': f'AnixartAPIWrapper/{__version__}-{__build__} (Linux; Android 12; SantaSpeen anixAPI Build/{__build__})'}
         self.token = token
 
     def post(self, method, payload=None, is_json=False, **kwargs):
