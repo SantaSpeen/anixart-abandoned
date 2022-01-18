@@ -9,8 +9,7 @@ class AnixRequestsHandler:
 
 	def __init__(self, token=None):
 		self.s = requests.Session()
-		self.s.headers = {'User-Agent': 'AnixartApp/7.9-21101018 (Android 11; SDK 30; arm64-v8a; samsung SM-A705FN; ru)'}
-		#self.s.headers.update({"Sign": "TlNwOFhxQklPQUFjU2JTZEZKQnNTWm2yQXBCZ3RNY4ZaZlduVDNXN4c3U5VZWlhSWTQxMVpzM3VTZks5azRYb2NKaXhTSk02Njc5fTc6Zzg5MzVoMzhkZzkwZmRnODg7aGVkNGc6NTFkOThnZ5NxLndhbWp6d5NqeC7lcm3iZXZ6aFR7MDF3VFlS8AL4r58u"}
+		self.s.headers = {'User-Agent': 'AnixartAPIWrapper/0.2.2-432 (Linux; Android 12; SantaSpeen anixAPI Build/432)'}
 		self.token=token
 	
 	def post(self, method, payload={}, is_json=False):

@@ -1,11 +1,9 @@
 import requests
+import json
 from .request_handler import AnixRequestsHandler
 from .errors import AnixAuthError, AnixInitError
+from .methods import SING_UP, SING_UP_VERIFY, SING_IN, FIREBASE, CHANGE_PASSWORD, PROFILE
 
-from .methods import SING_UP, SING_UP_VERIFY, SING_IN, FIREBASE
-
-# GET
-CHANGE_PASSWORD = "/profile/preference/password/change"
 
 def check_code(c):
 	if c==0:
@@ -17,6 +15,7 @@ class AnixAuth(AnixRequestsHandler):
 	def __init__(self, user):
 		super(AnixAuth, self).__init__()
 		self.user = user
+		self.filename = user.config_file
 
 	def _parse_response(self, data):
 		ready = data.json()
@@ -28,14 +27,44 @@ class AnixAuth(AnixRequestsHandler):
 
 		return ready
 
+	def _save_config(self, data):
+		with open(self.filename, "w") as f:
+			json.dump(data, f)
+		return data
+
+	def _open_config(self):
+		try:
+			with open(self.filename, "r") as read_file:
+				data = json.load(read_file)
+			return data
+		except Exception as e:
+			return False
+		
+
 	def sing_in(self):
+
+		config = self._open_config()
+
+		if config:
+			self.user.id = config.get("id")
+			self.user.token = config.get("token")
+			if not self.get(PROFILE.format(self.user.id), payload={"token":self.user.token}).json().get("is_my_profile"):
+				print("[ANIXART API] Invalid config file. Relogin.")
+			else:
+				return config
+
 		payload = {"login": self.user.login, "password": self.user.password}
 		res  = self.post(SING_IN, payload)
 		
 		ready = self._parse_response(res)
 
-		self.user.id = ready["profile"]["id"]
-		self.user.token = ready["profileToken"]["token"]
+		uid = ready["profile"]["id"]
+		token = ready["profileToken"]["token"]
+
+		self.user.id = uid
+		self.user.token = token
+
+		self._save_config({"id": uid, "token": token})
 
 		return ready
 
@@ -49,8 +78,15 @@ class AnixAuth(AnixRequestsHandler):
 		res2 = self.sing_up_verufy(code, res1["hash"], email, True)
 		ready = self._parse_response(res2)
 
-		self.user.id = ready["profile"]["id"]
-		self.user.token = ready["profileToken"]["token"]
+		uid = ready["profile"]["id"]
+		token = ready["profileToken"]["token"]
+
+		self.user.id = uid
+		self.user.token = token
+
+		self._save_config({"id": uid, "token": token})
+
+		return ready
 
 	def sing_up_verufy(self, code, _hash, email, local=False):
 		payload = {"login": self.user.login, "password": self.user.password, "email": email, "code": code, "hash": _hash}

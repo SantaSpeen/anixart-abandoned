@@ -3,15 +3,34 @@ from anixart import AnixUserAccount, AnixAPI
 anix_user = AnixUserAccount("rewrwerwfwef", "APIPassword")
 anix = AnixAPI(anix_user)
 
-print(f"Token: {anix.me.get_token()}; ID: {anix.me.get_id()}")
+def main(uid):
+	profile = anix.profile.get(uid=uid)['profile']
+	if profile==None:
+		print("Id is incorrect")
+		return
 
-profile = anix.profile.get()['profile']
-nick = profile['login']
-status = profile['status']
-vk = profile['vk_page']
-tg = profile['tg_page']
-inst = profile['inst_page']
-tt = profile['tt_page']
-reg_date = profile['register_date']
+	nick = profile.get('login')
+	uid = profile.get('id')
+	status = profile.get('status')
+	vk = profile.get('vk_page')
+	tg = profile.get('tg_page')
+	inst = profile.get('inst_page')
+	tt = profile.get('tt_page')
+	reg_date = profile.get('register_date')
 
-print(f"Nick: {nick}\nStatus: {status}\nVk: {vk}\nTg: {tg}\nInst: {inst}\nTt: {tt}\nRegister date: {reg_date}")
+	print(
+		f"\nNick: {nick}\n"+
+		f"Id: {uid}\n"+
+		f"Status: {status}\n"+
+		f"Vk: {vk}\n"+
+		f"Tg: {tg}\n"+
+		f"Inst: {inst}\n"+
+		f"Tt: {tt}\n"+
+		f"Register date: {reg_date}\n"
+		)
+
+
+if __name__ == '__main__':
+	uid = input("Type anixart user id: ")
+	if uid=="": uid=None
+	main(uid)

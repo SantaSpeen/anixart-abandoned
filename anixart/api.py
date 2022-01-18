@@ -4,7 +4,7 @@ from .errors import AnixInitError, AnixAuthError
 from .profile import AnixProfile
 
 class AnixUserAccount:
-	def __init__(self, login, password, need_reg=False, mail=None):
+	def __init__(self, login, password, need_reg=False, mail=None, config_file="anixart_login.json"):
 		self.login = login
 		self.password = password
 		if not isinstance(login, str) or not isinstance(password, str):
@@ -17,6 +17,7 @@ class AnixUserAccount:
 			if mail==None:
 				raise AnixAuthError("Pls input mail.")
 		self.mail = mail
+		self.config_file = config_file
 
 	def get_login(self):
 		return self.login
