@@ -33,14 +33,14 @@ print(f"Nick: {nick}\nStatus: {status}\nVk: {vk}\nTg: {tg}\nInst: {inst}\nTt: {t
 ```
 
 ### Ready now:
-* uid - int; User Id, default: self.
-* page - int; Page if data, default: 0.
-* cid - int; Collection id.
-* ccmid - int; Collection comment id.
-* query - str; query text.
-* message - str; Comment text.
-* spoiler - bool; Comment spoiler, default: False.
-* mark - int; Comment vote. Use `AnixComment.UP` or `AnixComment.DOWN`
+1. uid - int; User Id, default: self.
+2. page - int; Page if data, default: 0.
+3. cid - int; Collection id.
+4. ccmid - int; Collection comment id.
+5. query - str; query text.
+6. message - str; Comment text.
+7. spoiler - bool; Comment spoiler, default: False.
+8. mark - int; Comment vote. Use `AnixComment.UP` or `AnixComment.DOWN`
 
 
 * Me (class with login data): 
