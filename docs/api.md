@@ -15,7 +15,7 @@
 7. **message** - _str_; Текст комментария.
 8. **spoiler** - _bool_; Является ли комментарий спойлером, **_default_**: False.
 9. **mark** - _int_; Оценка комментария. Используйте `AnixComment.UP` или `AnixComment.DOWN`
-```python
+```
 from anixart import AnixComment
 
 ...

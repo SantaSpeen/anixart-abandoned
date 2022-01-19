@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # Edit methods
-from .methods import EDIT_STATUS, EDIT_SOCIAL, EDIT_AVATAR
+from .methods import EDIT_STATUS, EDIT_SOCIAL
 # Friends methods
 from .methods import FRIENDS, FRIENDS_RQ_IN, FRIENDS_RQ_OUT, FRIENDS_SEND, FRIENDS_REMOVE
 # Profile methods
