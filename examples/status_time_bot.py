@@ -1,8 +1,9 @@
-from anixart import AnixUserAccount, AnixAPI
-from datetime import datetime
 import time
+from datetime import datetime
 
-anix_user = AnixUserAccount("rewrwerwfwef", "APIPassword")
+from anixart import AnixUserAccount, AnixAPI
+
+anix_user = AnixUserAccount("login", "password")
 anix = AnixAPI(anix_user)
 
 print("\n\nAnixart time bot.")

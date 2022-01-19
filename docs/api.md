@@ -35,8 +35,8 @@ anix.coll.comments.vote(ccmid, mark)
 
 Базовый класс -> `anix.auth`
 
-- ~~Sing In~~ -> `anix.auth.sing_in()`; **Не используйте этот метод.** Библиотека сама входит в аккаунт.
-- ~~Sing Up~~ -> `anix.auth.sing_up()`; **Не используйте этот метод.** Библиотека сама регистрирует аккаунт.
+- Sing In -> `anix.auth.sing_in()`; **Не используйте этот метод.** Библиотека сама входит в аккаунт.
+- Sing Up -> `anix.auth.sing_up()`; **Не используйте этот метод.** Библиотека сама регистрирует аккаунт.
 - Firebase -> `anix.auth.firebase()`; 
 - Change password -> `anix.auth.change_password(old_pass, new_pass)`; Смена пароля.
 

@@ -1,6 +1,6 @@
 from anixart import AnixUserAccount, AnixAPI
 
-anix_user = AnixUserAccount("-", "-")
+anix_user = AnixUserAccount("login", "password")
 anix = AnixAPI(anix_user)
 
 uid = 1785853  # If None, program use self uid.
@@ -28,5 +28,5 @@ if profile_friends['total_count'] > 0:
     for f in profile_friends['content']:
         print(f"UID: {f['id']}; Nick: {f['login']}; Is online: {f['is_online']}")
 else:
-    print("User has no.")
+    print("User has no friends.")
 

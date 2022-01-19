@@ -26,14 +26,6 @@ Usage:
 >>> print(me)
 """
 
-try:
-    import requests
-except ImportError:
-    from .errors import AnixInitError
-    raise AnixInitError("Please install: 'requests'")
-finally:
-    del requests
-
 from .__version__ import __license__, __description__
 from .__version__ import __version__, __url__, __build__, __title__, __author__, __author_email__, __copyright__
 from .api import AnixAPIRequests as AnixAPI
