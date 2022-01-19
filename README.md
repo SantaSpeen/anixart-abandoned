@@ -8,9 +8,10 @@
 * Endpoints: [here](https://github.com/SantaSpeen/anixart/blob/master/anixart/methods.py)
 * Contacts: [Vk](https://vk.com/l.vindeta "Vk"), [Tg](https://t.me/id01234 "Tg").
 
-### Use:
-
+### Install: 
 `pip install anixart`
+
+### Use:
 
 ```python3
 from anixart import AnixUserAccount, AnixAPI

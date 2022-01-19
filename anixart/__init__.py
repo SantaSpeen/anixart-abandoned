@@ -19,23 +19,23 @@ If complaints are received from the project administration, then access to the r
 Usage:
 ~~~~~~
 
-from anixart import AnixUserAccount, AnixAPI
-
-anix_user = AnixUserAccount("login", "password")
-anix = AnixAPI(anix_user)
-
-me = anix.profile.get()
-print(me)
+>>> from anixart import AnixUserAccount, AnixAPI
+>>> anix_user = AnixUserAccount("login", "password")
+>>> anix = AnixAPI(anix_user)
+>>> me = anix.profile.get()
+>>> print(me)
 """
 
 try:
     import requests
 except ImportError:
     from .errors import AnixInitError
-
     raise AnixInitError("Please install: 'requests'")
+finally:
+    del requests
 
-from .__version__ import *
+from .__version__ import __license__, __description__
+from .__version__ import __version__, __url__, __build__, __title__, __author__, __author_email__, __copyright__
 from .api import AnixAPIRequests as AnixAPI
 from .api import AnixUserAccount
 from .methods import AnixComment
