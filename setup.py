@@ -12,8 +12,8 @@ requires = ['requests']
 # 'setup.py publish' shortcut.
 if sys.argv[-1] == 'publish':
     os.system('py -m build')
-    os.system('py -m twine upload --repository pypi dist/*')
     os.system('py -m twine upload --repository testpypi dist/*')
+    os.system('py -m twine upload --repository pypi dist/*')
     sys.exit()
 
 about = {}
