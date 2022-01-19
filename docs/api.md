@@ -145,9 +145,9 @@ _Местами_ `aniu`
   * edit
   * delete
 - favorite:
-    * get
-    * add
-    * delete
+  * get
+  * add
+  * delete
 
 ### Discover
 - interesting
