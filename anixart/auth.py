@@ -94,11 +94,15 @@ class AnixAuth(AnixRequestsHandler):
         return ready
 
     def sing_up_verify(self, code, _hash, email, local=False):
-        payload = {"login": self.user.login, "password": self.user.password, "email": email, "code": code,
+        payload = {"login": self.user.login,
+                   "password": self.user.password,
+                   "email": email,
+                   "code": code,
                    "hash": _hash}
-        res = self.post(SING_UP_VERIFY, payload)
+        res = self.post(SING_UP_VERIFY, payload, True, params=payload)
         res_json = res.json()
         if res_json['code'] != 0:
+            print(res_json)
             print("Code not right.")
             code = input("Pls input code again: ")
             return self.sing_up_verify(code, _hash, email, True)

@@ -22,7 +22,7 @@ CHANGE_PASSWORD = "/profile/preference/password/change"
 # GET
 PROFILE = "/profile/{}"  # + profile id
 PROFILE_NICK_HISTORY = "/profile/login/history/all/{}/{}"  # profile id / page
-BLOCKLIST = "/profile/blocklist/all/{}"  # page
+PROFILE_BLACKLIST = "/profile/blocklist/all/{}"  # page
 
 FRIENDS = "/profile/friend/all/{}/{}"  # profile id / page
 FRIENDS_RQ_IN = "/profile/friend/requests/in/last"

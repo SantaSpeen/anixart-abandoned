@@ -20,7 +20,7 @@ class AnixOther(AnixRequestsHandler):
 
 
 class AnixUserAccount:
-    def __init__(self, login, password, need_reg=False, mail="", config_file="anixart_login.json"):
+    def __init__(self, login, password, need_reg=False, email="", config_file="anixart_login.json"):
         """
         Info:
 
@@ -44,13 +44,13 @@ class AnixUserAccount:
         :param login: Your anixart nick
         :param password: Anixart password
         :param need_reg: If you need new account, set True.
-        :param mail: Real email for registration.
+        :param email: Real email for registration.
         :param config_file: Patch to anixart login cache.
 
         :type login: str
         :type password: str
         :type need_reg: bool
-        :type mail: str
+        :type email: str
         :type config_file: str
 
         :return: :class:`AnixUserAccount <anixart.api.AnixUserAccount>` object
@@ -65,9 +65,9 @@ class AnixUserAccount:
 
         self.need_reg = need_reg
         if need_reg:
-            if mail is None:
+            if email is None:
                 raise AnixAuthError("Pls input mail.")
-        self.mail = mail
+        self.mail = email
         self.config_file = config_file
 
     def get_login(self):

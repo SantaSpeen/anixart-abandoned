@@ -5,7 +5,7 @@ from .methods import EDIT_STATUS, EDIT_SOCIAL, EDIT_AVATAR
 # Friends methods
 from .methods import FRIENDS, FRIENDS_RQ_IN, FRIENDS_RQ_OUT, FRIENDS_SEND, FRIENDS_REMOVE
 # Profile methods
-from .methods import PROFILE, PROFILE_NICK_HISTORY
+from .methods import PROFILE, PROFILE_NICK_HISTORY, PROFILE_BLACKLIST
 # Vote methods
 from .methods import VOTE_VOTED, VOTE_UNVOTED
 
@@ -92,7 +92,7 @@ class AnixUsers(AnixProfileBase):
         return self._get(PROFILE_NICK_HISTORY.format(uid, page)).json()
 
     def blocklist(self, page=0):
-        return self._get(PROFILE_NICK_HISTORY.format(str(page))).json()
+        return self._get(PROFILE_BLACKLIST.format(str(page))).json()
 
 
 class AnixProfile(AnixUsers):
