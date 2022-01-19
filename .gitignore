@@ -130,8 +130,8 @@ dmypy.json
 
 # AnixartAPI
 anixart_login.json
-logins.json
-# test_lib.py
+local_data/
+./test_lib.py
 
 # mkdocs
 site/
