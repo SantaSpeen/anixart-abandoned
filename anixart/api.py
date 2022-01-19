@@ -30,12 +30,22 @@ class AnixUserAccount:
         Usage:
 
         >>> anix_user = AnixUserAccount("login", "password", need_reg=False, mail="", config_file="anixart_login.json")
+        >>> print(anix_user.login)
 
-        :param login: Anixart nick
+        Availible params:
+        ~~~~~~~~~~~~~~~~~
+
+        * login -> Your anixart nick
+        * password -> Your anixart password
+        * need_reg -> If you need new account, set True.
+        * mail -> Real email for registration.
+        * config_file -> Patch to anixart login cache.
+
+        :param login: Your anixart nick
         :param password: Anixart password
-        :param need_reg: If use use new account, set True
+        :param need_reg: If you need new account, set True.
         :param mail: Real email for registration.
-        :param config_file: Patch to anixart login data.
+        :param config_file: Patch to anixart login cache.
 
         :type login: str
         :type password: str
@@ -86,6 +96,15 @@ class AnixAPIRequests:
 
         >>> anix_user = AnixUserAccount("login", "password", need_reg=False, mail="", config_file="anixart_login.json")
         >>> anix = AnixAPI(anix_user)
+
+        Availible classes:
+        ~~~~~~~~~~~~~~~~~
+
+        * auth
+        * profile
+        * collection
+        * coll
+        * other
 
         :param user: :class:`AnixUserAccount <anixart.api.AnixUserAccount>` object
         :return: :class:`AnixAPIRequests <anixart.api.AnixAPIRequests>` object
