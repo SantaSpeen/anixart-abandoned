@@ -13,6 +13,7 @@ requires = ['requests']
 if sys.argv[-1] == 'publish':
     os.system('py -m build')
     os.system('py -m twine upload --repository pypi dist/*')
+    os.system('py -m twine upload --repository testpypi dist/*')
     sys.exit()
 
 about = {}

@@ -9,7 +9,7 @@
 * Contacts: [Vk](https://vk.com/l.vindeta "Vk"), [Tg](https://t.me/id01234 "Tg").
 
 ### Install: 
-`pip install anixart`
+`pip3 install anixart`
 
 ### Use:
 
@@ -35,7 +35,7 @@ print(f"Nick: {nick}\nStatus: {status}\nVk: {vk}\nTg: {tg}\nInst: {inst}\nTt: {t
 
 ### Ready now:
 1. uid - int; User Id, default: self.
-2. page - int; Page if data, default: 0.
+2. page - int; Page of data, default: 0.
 3. cid - int; Collection id.
 4. ccmid - int; Collection comment id.
 5. query - str; query text.

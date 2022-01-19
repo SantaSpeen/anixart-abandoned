@@ -1,0 +1,15 @@
+site_name: anixart
+repo_url: https://github.com/SantaSpeen/anixart
+site_author: Maxim Khomutov
+remote_name: master
+use_directory_urls: true
+
+nav:
+    - Домашняя страница: index.md
+    - API библиотеки: api.md
+    - Обратная связь: callback.md
+
+theme:
+  name: material
+  locale: ru
+  highlightjs: true
