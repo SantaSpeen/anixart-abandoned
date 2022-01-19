@@ -4,6 +4,7 @@ class AnixComment:
     UP = 2
     DOWN = 1
 
+
 API_URL = "https://api.anixart.tv"
 
 ################   AUTH   ################
@@ -16,6 +17,7 @@ FIREBASE = "/auth/firebase"
 
 # GET
 CHANGE_PASSWORD = "/profile/preference/password/change"
+
 
 ################ PROFILE ################
 
@@ -37,8 +39,6 @@ VOTE_UNVOTED = "/profile/vote/release/unvoted/{}"  # page
 EDIT_STATUS = "/profile/preference/status/edit"
 EDIT_SOCIAL = "/profile/preference/social/edit"
 
-# TODO
-EDIT_AVATAR = "/profile/preference/avatar/edit"
 
 #############  COLLECTION  #############
 
@@ -56,20 +56,40 @@ COLLECTION_COMMENTS_DELETE = "/collection/comment/delete/{}"  # collection comme
 # POST
 COLLECTION_SEARCH = "/search/collections/{}"  # page req: { "query": text, "searchBy": 0}
 
-COLLECTION_COMMENTS_ADD = "/collection/comment/add/{}"  # collection id req: {"message": msg, "parentCommentId": pcmi, "replyToProfileId": rtpi, "spoiler": false}
-COLLECTION_COMMENTS_EDIT = "/collection/comment/edit/{}"  # collection comment id req: {"message": msg, "spoiler": false}
+COLLECTION_COMMENTS_ADD = "/collection/comment/add/{}"  # collection id
+COLLECTION_COMMENTS_EDIT = "/collection/comment/edit/{}"  # collection comment id
 
-################         ################
 
+#############    RELEASE    #############
+
+# GET
+RELEASE = "/release/{}"  # release id
+RELEASE_VOTE_ADD = "/release/vote/add/{}/{}"  # release id / mark 1-5
+RELEASE_VOTE_DELETE = "/release/vote/delete/{}"  # release id
+RELEASE_RANDOM = "/release/random"
+
+RELEASE_COMMENTS = "/release/comment/all/{}/{}"  # release id / page
+RELEASE_COMMENTS_VOTE = "/release/comment/vote/{}/{}"  # release comment id / mark (1, 2)
+RELEASE_COMMENTS_VOTES = "/release/comment/votes/{}/{}"  # release comment id / page
+RELEASE_COMMENTS_REPLIES = "/release/comment/replies/{}/{}"  # release comment id / page
+RELEASE_COMMENTS_DELETE = "/release/comment/delete/{}"  # release comment id
+
+# POST
+RELEASE_COMMENTS_ADD = "/release/comment/add/{}"  # release id
+RELEASE_COMMENTS_EDIT = "/release/comment/edit/{}"  # release comment id
+
+#############    OTHER    #############
+
+# GET
 VOICE = "/type/all"
 
-WATCHING = "/profile/list/all/1/{}"  # + page
-# "/profile/list/all/1796506/1/{}"
-IN_PLANS = "/profile/list/all/2/{}"  # + page
-WATCHED = "/profile/list/all/3/{}"  # + page
-POST_PONED = "/profile/list/all/4/{}"  # + page
-THROWN = "/profile/list/all/5/{}"  # + page
-HISTORY = "/history/{}"  # + page
-FAVORITE = "favorite/all/{}"  # + page
-
-RELEASE = "/release/{}"  # + release id
+# TODO
+# EDIT_AVATAR = "/profile/preference/avatar/edit"
+# WATCHING = "/profile/list/all/1/{}"  # + page
+# # "/profile/list/all/1796506/1/{}"
+# IN_PLANS = "/profile/list/all/2/{}"  # + page
+# WATCHED = "/profile/list/all/3/{}"  # + page
+# POSTPONED = "/profile/list/all/4/{}"  # + page
+# THROWN = "/profile/list/all/5/{}"  # + page
+# HISTORY = "/history/{}"  # + page
+# FAVORITE = "favorite/all/{}"  # + page

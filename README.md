@@ -91,6 +91,21 @@ print(f"Nick: {nick}\nStatus: {status}\nVk: {vk}\nTg: {tg}\nInst: {inst}\nTt: {t
       * edit -> `anix.coll.comments.edit(ccmid, message, spoiler)`; Edit a comment.
       * delete -> `anix.coll.comments.delete(ccmid)`; Delete a comment.
 
+* Release
+  - get -> `anix.release.get(rid)`; Get release rid.
+  - random -> `anix.release.random()`; Get random release.
+  - vote:
+      * add -> `anix.release.get(rid, rmark)`; Set mark.
+      * delete ->`anix.release.get(rid)`; Del mark.
+  - comments `anix.release.comments`:
+    * get -> `anix.release.comments.get(cid, page)`; Get release comments.
+    * add -> `anix.release.comments.add(cid, message, parent_comment_id, reply_to_profile_id, spoiler)`; Add comment to release.
+    * vote -> `anix.release.comments.vote(rcmid, mark)`; Rate a comment.
+    * votes -> `anix.release.comments.votes(rcmid, page)`; List of rated.
+    * replies -> `anix.release.comments.replies(rcmid, page)`; Responses to a comment.
+    * edit -> `anix.release.comments.edit(rcmid, message, spoiler)`; Edit a comment.
+    * delete -> `anix.release.comments.delete(rcmid)`; Delete a comment.
+
 * Other `anix.other`:
   - voice -> `anix.other.voice()`; See all available voiceovers.
 
@@ -114,19 +129,7 @@ print(f"Nick: {nick}\nStatus: {status}\nVk: {vk}\nTg: {tg}\nInst: {inst}\nTt: {t
 			- episode
 			- comment
 			- status
-			- voice (type)
 			- collection
-
-* Release:
-	- get
-	- vote:
-		* add
-		* delete
-	- comment:
-		* get 
-		* vote
-		* add
-	- random
 
 * Collections:
 	- my:

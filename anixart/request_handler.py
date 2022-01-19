@@ -27,7 +27,7 @@ def parse_res_code(res, payload, m, h):
     if code == 0:
         return
     elif code == 2:
-        raise AnixAPIError(f"Incorrect login or User ID; Json: {json}")
+        raise AnixAPIError(f"Incorrect input data.; Json: {json}")
     elif code == 3:
         if json.get("hash") is not None:
             raise AnixAuthLoginEnterEmail(f"Pls input mail; Json: {json}")

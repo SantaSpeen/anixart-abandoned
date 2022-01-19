@@ -5,6 +5,7 @@ from .collections import AnixCollection
 from .errors import AnixInitError, AnixAuthError
 from .methods import VOICE
 from .profile import AnixProfile
+from .release import AnixRelease
 from .request_handler import AnixRequestsHandler
 
 
@@ -126,5 +127,6 @@ class AnixAPIRequests:
         self.collection = AnixCollection(user)
         self.coll = self.collection
         self.other = AnixOther(user)
+        self.release = AnixRelease(user)
 
 
