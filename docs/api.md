@@ -80,8 +80,12 @@ anix.coll.comments.vote(ccmid, mark)
   * edit -> `anix.coll.comments.edit(ccmid, message, spoiler)`; Edit a comment.
   * delete -> `anix.coll.comments.delete(ccmid)`; Delete a comment.
   
-### Voice
-- voice -> `anix.voice()`; Получить список всех возможных озвучек.
+### Other
+**Класс для работы с остальными методами** 
+
+Базовый класс -> `anix.other`
+
+- voice -> `anix.other.voice()`; Получить список всех возможных озвучек.
 
 ## **Ещё не описанные методы**
 

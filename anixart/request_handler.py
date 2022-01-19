@@ -18,6 +18,7 @@ class AnixRequestsHandler:
     def __init__(self, token=None):
         self.s = requests.Session()
         self.s.headers = {'User-Agent': f'AnixartAPIWrapper/{__version__}-{__build__} (Linux; Android 12; SantaSpeen anixAPI Build/{__build__})'}
+        print(token)
         self.token = token
 
     def post(self, method, payload=None, is_json=False, **kwargs):

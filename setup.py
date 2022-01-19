@@ -33,7 +33,7 @@ setup(
     author_email=about['__author_email__'],
     url=about['__url__'],
     packages=packages,
-    package_data={'': ['LICENSE', 'NOTICE']},
+    package_data={'': ['LICENSE']},
     package_dir={'anixart': 'anixart'},
     include_package_data=True,
     install_requires=requires,
@@ -44,8 +44,8 @@ setup(
         "Operating System :: OS Independent",
     ],
     project_urls={
-        'Documentation': 'https://github.com/SantaSpeen/anixart/blob/master/README.md',
+        'Documentation': 'https://anixart.readthedocs.io/',
         'Source': 'https://github.com/SantaSpeen/anixart',
     },
-    python_requires=">=3.6",
+    python_requires=">=3.7",
 )

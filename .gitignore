@@ -128,8 +128,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# AnixartAPI login
+# AnixartAPI
 anixart_login.json
+test_lib.py
 
 # mkdocs
 site/

@@ -6,9 +6,9 @@ from .methods import EDIT_STATUS, EDIT_SOCIAL, EDIT_AVATAR
 from .methods import FRIENDS, FRIENDS_RQ_IN, FRIENDS_RQ_OUT, FRIENDS_SEND, FRIENDS_REMOVE
 # Profile methods
 from .methods import PROFILE, PROFILE_NICK_HISTORY
-from .methods import VOICE
 # Vote methods
 from .methods import VOTE_VOTED, VOTE_UNVOTED
+
 from .request_handler import AnixRequestsHandler
 
 
@@ -101,6 +101,3 @@ class AnixProfile(AnixUsers):
         self.friends = AnixUsersFriends(user)
         self.vote = AnixUsersVote(user)
         self.edit = AnixUsersEdit(user)
-
-    def _voice(self):
-        return self._get(VOICE).json()

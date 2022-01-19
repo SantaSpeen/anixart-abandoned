@@ -91,7 +91,8 @@ print(f"Nick: {nick}\nStatus: {status}\nVk: {vk}\nTg: {tg}\nInst: {inst}\nTt: {t
       * edit -> `anix.coll.comments.edit(ccmid, message, spoiler)`; Edit a comment.
       * delete -> `anix.coll.comments.delete(ccmid)`; Delete a comment.
 
-* Voice -> `anix.voice()`; See all available voiceovers.
+* Other `anix.other`:
+  - voice -> `anix.other.voice()`; See all available voiceovers.
 
 ### In plans:
 

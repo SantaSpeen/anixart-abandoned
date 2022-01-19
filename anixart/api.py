@@ -3,7 +3,20 @@
 from .auth import AnixAuth
 from .collections import AnixCollection
 from .errors import AnixInitError, AnixAuthError
+from .methods import VOICE
 from .profile import AnixProfile
+from .request_handler import AnixRequestsHandler
+
+
+class AnixOther(AnixRequestsHandler):
+    def __init__(self, user):
+        super(AnixOther, self).__init__(user.token)
+        self._get = super().get
+        self.get = None
+        self.post = None
+
+    def voice(self):
+        return self._get(VOICE).json()
 
 
 class AnixUserAccount:
@@ -93,6 +106,6 @@ class AnixAPIRequests:
         self.profile = AnixProfile(user)
         self.collection = AnixCollection(user)
         self.coll = self.collection
-        self.voice = self.profile._voice
+        self.other = AnixOther(user)
 
 

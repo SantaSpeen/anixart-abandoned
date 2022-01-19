@@ -47,17 +47,15 @@ class AnixAuth(AnixRequestsHandler):
         config = self._open_config()
 
         if config:
-
             uid = config.get("id")
             token = config.get("token")
             if not self.get(PROFILE.format(uid), payload={"token": token}).json().get("is_my_profile") or \
                     self.user.login != config.get("login"):
                 print("[ANIXART API] Invalid config file. Re login.")
 
+            else:
                 self.user.id = uid
                 self.user.token = token
-
-            else:
                 return config
 
         payload = {"login": self.user.login, "password": self.user.password}
