@@ -1,3 +1,7 @@
+---
+hide:
+  - toc
+---
 # Обратная связь
 
 * [Vkontakte](https://vk.com/l.vindeta "Vk") - Доступен в 95% случаев.
