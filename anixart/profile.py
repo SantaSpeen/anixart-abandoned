@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
 # Edit methods
-from .methods import EDIT_STATUS, EDIT_SOCIAL
+from .endpoints import EDIT_STATUS, EDIT_SOCIAL
 # Friends methods
-from .methods import FRIENDS, FRIENDS_RQ_IN, FRIENDS_RQ_OUT, FRIENDS_SEND, FRIENDS_REMOVE
+from .endpoints import FRIENDS, FRIENDS_RQ_IN, FRIENDS_RQ_OUT, FRIENDS_SEND, FRIENDS_REMOVE
 # Profile methods
-from .methods import PROFILE, PROFILE_NICK_HISTORY, PROFILE_BLACKLIST
+from .endpoints import PROFILE, PROFILE_NICK_HISTORY, PROFILE_BLACKLIST
 # Vote methods
-from .methods import VOTE_VOTED, VOTE_UNVOTED
+from .endpoints import VOTE_VOTED, VOTE_UNVOTED
 
 from .request_handler import AnixRequestsHandler
 

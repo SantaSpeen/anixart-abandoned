@@ -2,8 +2,8 @@
 
 from .auth import AnixAuth
 from .collections import AnixCollection
+from .endpoints import VOICE
 from .errors import AnixInitError, AnixAuthError
-from .methods import VOICE
 from .profile import AnixProfile
 from .release import AnixRelease
 from .request_handler import AnixRequestsHandler

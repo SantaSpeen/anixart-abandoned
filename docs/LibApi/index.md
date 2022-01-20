@@ -8,4 +8,4 @@ hide:
 
 <span style="color:red">**Отображение некоторых списков может быть некорректным**.</span>
 
-**Все эндпоинты можно найти здесь:** [тык](https://github.com/SantaSpeen/anixart/blob/master/anixart/methods.py "тык")
+**Все эндпоинты можно найти здесь:** [тык](https://github.com/SantaSpeen/anixart/blob/master/anixart/endpoints.py "тык")

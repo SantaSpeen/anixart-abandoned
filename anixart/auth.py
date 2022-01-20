@@ -2,8 +2,8 @@
 
 import json
 
+from .endpoints import SING_UP, SING_UP_VERIFY, SING_IN, FIREBASE, CHANGE_PASSWORD, PROFILE
 from .errors import AnixAuthError
-from .methods import SING_UP, SING_UP_VERIFY, SING_IN, FIREBASE, CHANGE_PASSWORD, PROFILE
 from .request_handler import AnixRequestsHandler
 
 

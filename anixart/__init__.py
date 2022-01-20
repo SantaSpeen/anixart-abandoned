@@ -30,4 +30,4 @@ from .__version__ import __license__, __description__
 from .__version__ import __version__, __url__, __build__, __title__, __author__, __author_email__, __copyright__
 from .api import AnixAPIRequests as AnixAPI
 from .api import AnixUserAccount
-from .methods import AnixComment
+from .endpoints import AnixComment, AnixProfileVotedSort

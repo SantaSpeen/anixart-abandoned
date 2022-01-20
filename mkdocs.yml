@@ -10,11 +10,18 @@ nav:
         Быстрое начало: home/index.md
         Примеры использования: home/examples.md
     - API библиотеки:
-        Введение: api/index.md
-        Метки и условные обозночения: api/tags.md
-        Методы: api/methods.md
-        Неописанные методы: api/todo_methods.md
-    - ROADMAP: ROADMAP.md
+        Введение: LibApi/index.md
+        Метки и условные обозночения: LibApi/tags.md
+        Методы: LibApi/methods.md
+        Неописанные методы: LibApi/todo_methods.md
+    - API Anixart:
+        Введение: anixApi/index.md
+        Auth: anixApi/auth.md
+        Profile: anixApi/profile.md
+        Collections: anixApi/collections.md
+        Release: anixApi/release.md
+        Other: anixApi/other.md
+
     - CHANGELOG: CHANGELOG.md
     - Обратная связь: callback.md
 

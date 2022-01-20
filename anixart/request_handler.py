@@ -9,9 +9,9 @@ This module implements the API requests.
 import requests
 
 from .__version__ import __version__, __build__
+from .endpoints import API_URL
 from .errors import AnixAPIRequestError, AnixAPIError, AnixAuthError, AnixAuthLoginAlreadyRegistered, \
     AnixAuthLoginEnterEmail
-from .methods import API_URL
 
 
 def parse_res_code(res, payload, m, h):

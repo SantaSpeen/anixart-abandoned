@@ -13,6 +13,6 @@ hide:
     * [Быстрое начало](home)
     * [Примеры]()
 2. API
-    * [Метки методов](api/tags)
-    * [Методы](api/methods/)
+    * [Метки методов](LibApi/tags)
+    * [Методы](LibApi/methods/)
 3. [CHANGELOG](/CHANGELOG)

@@ -8,7 +8,7 @@
     * **RU**: Враппер для использования anixart API, наилучшего приложения для просмотра аниме на территории стран СНГ.  От себя могу сказать, что библиотека создана лишь для ознакомления. Не советую заниматься такимим вещами как накрутка лайков, имейте уважение к проекту. Если поступят жалобы от администрации проекта, то доступ к репозиторию будет ограничен.
 
 
-* Endpoints: [here](https://github.com/SantaSpeen/anixart/blob/master/anixart/methods.py)
+* Endpoints: [here](https://github.com/SantaSpeen/anixart/blob/master/anixart/endpoints.py)
 * Contacts: [Vk](https://vk.com/l.vindeta "Vk"), [Tg](https://t.me/id01234 "Tg").
 
 ### Install: 
