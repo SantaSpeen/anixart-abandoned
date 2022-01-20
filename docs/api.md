@@ -54,18 +54,18 @@ anix.coll.comments.vote(ccmid, mark)
 - history -> `anix.profile.history(uid, page)`; Получить историю никнеймов пользователя.
 - blocklist  -> `anix.profile.blocklist(page)`; Получить свой чёрный список.
 - friends `anix.profile.friends`: 
-  * get -> `anix.profile.friends.get(uid, page)`; Получить список друзей по uid.
-  * incoming -> `anix.profile.friends.incoming()`; Получить входящие заявки в друзья.
-  * outgoing -> `anix.profile.friends.outgoing()`; Получить исходящие заявки в друзья.
-  * add -> `anix.profile.friends.add(uid)`; Подписаться на пользователя. **uid обязателен.** 
-  * accept -> `anix.profile.friends.accept(uid)`; Принять заявку в друзья. **uid обязателен.**
-  * remove -> `anix.profile.friends.remove(uid)`; Удалить пользователя из друзей. **uid обязателен.**
+     * get -> `anix.profile.friends.get(uid, page)`; Получить список друзей по uid.
+     * incoming -> `anix.profile.friends.incoming()`; Получить входящие заявки в друзья.
+     * outgoing -> `anix.profile.friends.outgoing()`; Получить исходящие заявки в друзья.
+     * add -> `anix.profile.friends.add(uid)`; Подписаться на пользователя. **uid обязателен.** 
+     * accept -> `anix.profile.friends.accept(uid)`; Принять заявку в друзья. **uid обязателен.**
+     * remove -> `anix.profile.friends.remove(uid)`; Удалить пользователя из друзей. **uid обязателен.**
 - vote `anix.profile.vote`: 
-  * voted -> `anix.profile.vote.voted(uid, page)`; Получить список оценённых аниме. 
-  * unvoted -> `anix.profile.vote.unvoted(page)`; Получить не список оценённых аниме. 
+     * voted -> `anix.profile.vote.voted(uid, page)`; Получить список оценённых аниме. 
+     * unvoted -> `anix.profile.vote.unvoted(page)`; Получить не список оценённых аниме. 
 - edit `anix.profile.edit`: 
-  * status -> `anix.profile.edit.status(text)`; Отредактировать статус.
-  * social -> `anix.profile.edit.social(instId, tgId, vkId, ttId)`; Отредактировать контакты.
+     * status -> `anix.profile.edit.status(text)`; Отредактировать статус.
+     * social -> `anix.profile.edit.social(instId, tgId, vkId, ttId)`; Отредактировать контакты.
 
 ### Collections
 **Класс для работы с коллекциями** 
@@ -79,13 +79,13 @@ anix.coll.comments.vote(ccmid, mark)
 - releases -> `anix.coll.releases(cid, page)`; Get releases in a collection.
 - search -> `anix.coll.search(query, page)`; Finding a collection by name.
 - comments `anix.coll.comments`:
-  * get -> `anix.coll.comments.get(cid, page)`; Get collection comments.
-  * add -> `anix.coll.comments.add(cid, message, parent_comment_id, reply_to_profile_id, spoiler)`; Add comment to collection.
-  * vote -> `anix.coll.comments.vote(ccmid, mark)`; Rate a comment.
-  * votes -> `anix.coll.comments.votes(ccmid, page)`; List of rated.
-  * replies -> `anix.coll.comments.replies(ccmid, page)`; Responses to a comment.
-  * edit -> `anix.coll.comments.edit(ccmid, message, spoiler)`; Edit a comment.
-  * delete -> `anix.coll.comments.delete(ccmid)`; Delete a comment.
+     * get -> `anix.coll.comments.get(cid, page)`; Get collection comments.
+     * add -> `anix.coll.comments.add(cid, message, parent_comment_id, reply_to_profile_id, spoiler)`; Add comment to collection.
+     * vote -> `anix.coll.comments.vote(ccmid, mark)`; Rate a comment.
+     * votes -> `anix.coll.comments.votes(ccmid, page)`; List of rated.
+     * replies -> `anix.coll.comments.replies(ccmid, page)`; Responses to a comment.
+     * edit -> `anix.coll.comments.edit(ccmid, message, spoiler)`; Edit a comment.
+     * delete -> `anix.coll.comments.delete(ccmid)`; Delete a comment.
   
   
 ### Release
@@ -98,16 +98,16 @@ _Местами_ `aniu`
 - get -> `anix.release.get(rid)`; Получить релиз по rid.
 - random -> `anix.release.random()`; Получить рандомный релиз.
 - vote:
-    * add -> `anix.release.get(rid, rmark)`; Установить оценку релизу.
-    * delete ->`anix.release.get(rid)`; Удалить свою оценку у релиза.
+     * add -> `anix.release.get(rid, rmark)`; Установить оценку релизу.
+     * delete ->`anix.release.get(rid)`; Удалить свою оценку у релиза.
 - comments `anix.release.comments`:
-  * get -> `anix.release.comments.get(cid, page)`; Get release comments.
-  * add -> `anix.release.comments.add(cid, message, parent_comment_id, reply_to_profile_id, spoiler)`; Add comment to release.
-  * vote -> `anix.release.comments.vote(rcmid, mark)`; Rate a comment.
-  * votes -> `anix.release.comments.votes(rcmid, page)`; List of rated.
-  * replies -> `anix.release.comments.replies(rcmid, page)`; Responses to a comment.
-  * edit -> `anix.release.comments.edit(rcmid, message, spoiler)`; Edit a comment.
-  * delete -> `anix.release.comments.delete(rcmid)`; Delete a comment.
+     * get -> `anix.release.comments.get(cid, page)`; Get release comments.
+     * add -> `anix.release.comments.add(cid, message, parent_comment_id, reply_to_profile_id, spoiler)`; Add comment to release.
+     * vote -> `anix.release.comments.vote(rcmid, mark)`; Rate a comment.
+     * votes -> `anix.release.comments.votes(rcmid, page)`; List of rated.
+     * replies -> `anix.release.comments.replies(rcmid, page)`; Responses to a comment.
+     * edit -> `anix.release.comments.edit(rcmid, message, spoiler)`; Edit a comment.
+     * delete -> `anix.release.comments.delete(rcmid)`; Delete a comment.
 
 ### Other
 **Класс для работы с остальными методами** 
@@ -120,34 +120,34 @@ _Местами_ `aniu`
 
 ### Profile
 - list:
-  * get:
-    - watching
-    - plan
-    - watched
-    - postponed
-    - thrown
-    - history
-    - favorite 
-    - collections
-  * add
+     * get:
+          * watching
+          * plan
+          * watched
+          * postponed
+          * thrown
+          * history           
+          * favorite 
+          * collections
+     * add
 - edit:
     * avatar
     * notification:
-        - episode
-        - comment
-        - status
-        - collection
+         * episode
+         * comment
+         * status
+         * collection
 
 ### Collections:
 - my:
-  * get
-  * create
-  * edit
-  * delete
+     * get
+     * create
+     * edit
+     * delete
 - favorite:
-  * get
-  * add
-  * delete
+     * get
+     * add
+     * delete
 
 ### Discover
 - interesting
@@ -161,12 +161,12 @@ _Местами_ `aniu`
 
 ### Episode
 - get: 
-  - voice
-  - player
-  - video
+     * voice
+     * player
+     * video
 - set:
-    - watch
-    - unwatch
+     * watch
+     * unwatch
     
 ### Notification
 Ещё не изучал.
