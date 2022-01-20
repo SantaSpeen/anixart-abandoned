@@ -1,5 +1,7 @@
 # API библиотеки
 
+<span style="color:red">**Отображение некоторых списков может быть некорректным**.</span>
+
 Некторые разделы дублируются на https://aniu.ru/, такие разделы будут помечены как `aniu`
 
 **Все эндпоинты можно найти здесь:** [тык](https://github.com/SantaSpeen/anixart/blob/master/anixart/methods.py "тык")
