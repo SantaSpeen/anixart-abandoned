@@ -100,4 +100,4 @@
 
 Базовый класс -> `anix.other`
 
-- <span style="color:#7CD9B4">●</span> voice -> `anix.other.voice()`; Получить список всех возможных озвучек.
+- <span style="color:#7CD9B4">●</span> voice -> `anix.other.type()`; Получить список всех возможных озвучек.

@@ -107,7 +107,7 @@ print(f"Nick: {nick}\nStatus: {status}\nVk: {vk}\nTg: {tg}\nInst: {inst}\nTt: {t
     * delete -> `anix.release.comments.delete(rcmid)`; Delete a comment.
 
 * Other `anix.other`:
-  - voice -> `anix.other.voice()`; See all available voiceovers.
+  - type -> `anix.other.type()`; See all available voiceovers.
 
 ### In plans:
 
