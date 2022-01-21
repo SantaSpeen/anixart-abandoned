@@ -16,6 +16,16 @@
 
 ## Anixart API Wrapper Docs
 
+### 21.01.2022
+
+#### Version: 0.9.2
+
+* Добавлен раздел API Anixart
+* API Anixart:
+    * Описан Auth
+    * Частично описан Profile
+    * Описан Other
+
 ### 20.01.2022
 
 #### Version: 0.9.1
