@@ -20,39 +20,50 @@ def parse_res_code(res, payload, m, h):
     error = json.get("error")
     code = json.get("code")
 
-    if error:
-        # raise AnixAPIRequestError(f"\n\nURL: POST {res.url};\nDATA: {payload}\nError: {res.json().get('error')}\n")
-        raise AnixAPIRequestError(f"Internal server error: {error}; Payload: {payload}")
-
-    if code == 0:
-        return
-    elif code == 2:
-        raise AnixAPIError(f"Incorrect input data.; Json: {json}")
-    elif code == 3:
-        if json.get("hash") is not None:
-            raise AnixAuthLoginEnterEmail(f"Pls input mail; Json: {json}")
-        raise AnixAuthError(f"Incorrect password; Json: {json}")
-    elif code == 5:
-        raise AnixAuthLoginAlreadyRegistered(f"Login already registered; Json: {json}")
-    elif code == 7:
-        # Reg code not right.
-        # print("code 7")
-        return
-        # raise AnixAuthEmailAlreadyRegistered(f"E-mail already registered; Json: {json}")
-    elif code == 8:
-        # print("code 8")
-        return
-    elif code >= 400:
-        raise AnixAPIRequestError(f"\n\n"
-                                  f"Send this info to author.\n"
+    if res.status_code >= 400:
+        raise AnixAPIRequestError(f"\n\nANIX API WRAPPER ERROR\n"
+                                  f"Send this info to author: https://vk.com/l.vindeta\n"
                                   f"URL: {m} {res.url}\n"
                                   f"Status code: {res.status_code}\n"
                                   f"Res headers: {res.headers}\n"
                                   f"Req headers: {h}\n"
                                   f"Server res: {json}\n"
                                   f"Client req: {payload}\n")
-    else:
-        raise AnixAPIError(f"Server send error code: {code}; Json: {json}")
+
+    if error:
+        # raise AnixAPIRequestError(f"\n\nURL: POST {res.url};\nDATA: {payload}\nError: {res.json().get('error')}\n")
+        raise AnixAPIRequestError(f"Internal server error: {error}; Payload: {payload}")
+
+    if code:
+        if code == 0:
+            return
+        elif code == 2:
+            raise AnixAPIError(f"Incorrect input data.; Json: {json}")
+        elif code == 3:
+            if json.get("hash") is not None:
+                raise AnixAuthLoginEnterEmail(f"Pls input mail; Json: {json}")
+            raise AnixAuthError(f"Incorrect password; Json: {json}")
+        elif code == 5:
+            raise AnixAuthLoginAlreadyRegistered(f"Login already registered; Json: {json}")
+        elif code == 7:
+            # Reg code not right.
+            # print("code 7")
+            return
+            # raise AnixAuthEmailAlreadyRegistered(f"E-mail already registered; Json: {json}")
+        elif code == 8:
+            # print("code 8")
+            return
+        elif code >= 400:
+            raise AnixAPIRequestError(f"\n\n"
+                                      f"Send this info to author.\n"
+                                      f"URL: {m} {res.url}\n"
+                                      f"Status code: {res.status_code}\n"
+                                      f"Res headers: {res.headers}\n"
+                                      f"Req headers: {h}\n"
+                                      f"Server res: {json}\n"
+                                      f"Client req: {payload}\n")
+        else:
+            raise AnixAPIError(f"Server send error code: {code}; Json: {json}")
 
 
 class AnixRequestsHandler:

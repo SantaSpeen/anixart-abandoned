@@ -62,7 +62,6 @@ class AnixAuth(AnixRequestsHandler):
         res = self.post(SING_IN, payload)
 
         ready = self._parse_response(res)
-        print(str(ready).replace("'", '"').replace("True", "true").replace("False", "false").replace("None", "null"))
 
         uid = ready["profile"]["id"]
         token = ready["profileToken"]["token"]

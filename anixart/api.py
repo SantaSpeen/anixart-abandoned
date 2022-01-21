@@ -2,7 +2,7 @@
 
 from .auth import AnixAuth
 from .collections import AnixCollection
-from .endpoints import VOICE
+from .endpoints import TYPE
 from .errors import AnixInitError, AnixAuthError
 from .profile import AnixProfile
 from .release import AnixRelease
@@ -16,8 +16,8 @@ class AnixOther(AnixRequestsHandler):
         self.get = None
         self.post = None
 
-    def voice(self):
-        return self._get(VOICE).json()
+    def type(self):
+        return self._get(TYPE).json()
 
 
 class AnixUserAccount:

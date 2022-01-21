@@ -15,6 +15,14 @@ class AnixProfileVotedSort:
     STAR_1 = 7
 
 
+class AnixList:
+    WATCHING = 1
+    IN_PLANS = 2
+    WATCHED = 3
+    POSTPONED = 4
+    DROPPED = 5
+
+
 API_URL = "https://api.anixart.tv"
 
 ################   AUTH   ################
@@ -29,14 +37,17 @@ FIREBASE = "/auth/firebase"
 CHANGE_PASSWORD = "/profile/preference/password/change"
 
 ################ PROFILE ################
+# TODO PROFILE: PROFILE_BLACKLIST_ADD, PROFILE_BLACKLIST_REMOVE, LISTS, SETTINGS_NOTIFICATION,
+#  SETTINGS_RELEASE_NOTIFICATION, SETTINGS_RELEASE_FIRST_NOTIFICATION, SETTINGS_COMMENTS_NOTIFICATION,
+#  SETTINGS_COLLECTION_NOTIFICATION, EDIT_AVATAR, SETTINGS_RELEASE_LIST_NOTIFICATION, SETTINGS_RELEASE_TYPE_NOTIFICATION
 
 # GET
 PROFILE = "/profile/{}"  # + profile id
 PROFILE_NICK_HISTORY = "/profile/login/history/all/{}/{}"  # profile id / page
 
 PROFILE_BLACKLIST = "/profile/blocklist/all/{}"  # page
-PROFILE_BLACKLIST_ADD = "/profile/blocklist/add/{}"  # profile id #TODO
-PROFILE_BLACKLIST_REMOVE = "/profile/blocklist/remove/{}"  # profile id #TODO
+PROFILE_BLACKLIST_ADD = "/profile/blocklist/add/{}"  # profile id
+PROFILE_BLACKLIST_REMOVE = "/profile/blocklist/remove/{}"  # profile id
 
 FRIENDS = "/profile/friend/all/{}/{}"  # profile id / page
 FRIENDS_RQ_IN = "/profile/friend/requests/in/last"
@@ -47,12 +58,24 @@ FRIENDS_REMOVE = "/profile/friend/request/remove/{}"  # profile id
 VOTE_VOTED = "/profile/vote/release/voted/{}/{}"  # profile id / page
 VOTE_UNVOTED = "/profile/vote/release/unvoted/{}"  # page
 
+LISTS = "/profile/list/all/{}/{}/{}"  # profile id / list id / page
+
+SETTINGS_NOTIFICATION = "/profile/preference/notification/my"
+SETTINGS_RELEASE_NOTIFICATION = "/profile/preference/notification/episode/edit"
+SETTINGS_RELEASE_FIRST_NOTIFICATION = "/profile/preference/notification/episode/first/edit"
+SETTINGS_COMMENTS_NOTIFICATION = "/profile/preference/notification/comment/edit"
+SETTINGS_COLLECTION_NOTIFICATION = "/profile/preference/notification/my/collection/comment/edit"
+
 # POST
 EDIT_STATUS = "/profile/preference/status/edit"
 EDIT_SOCIAL = "/profile/preference/social/edit"
-EDIT_AVATAR = "/profile/preference/avatar/edit"  # TODO
+EDIT_AVATAR = "/profile/preference/avatar/edit"
+
+SETTINGS_RELEASE_LIST_NOTIFICATION = "/profile/preference/notification/status/edit"  # {"profileStatusNotificationPreferences":[0 - favorite, + all in AnixList]}
+SETTINGS_RELEASE_TYPE_NOTIFICATION = "/profile/preference/notification/type/edit"   # {"profileTypeNotificationPreferences":[type ids]}
 
 #############  COLLECTION  #############
+# TODO COLLECTION: COLLECTION_FAVORITE, COLLECTION_FAVORITE_ADD, COLLECTION_FAVORITE_DELETE
 
 # GET
 COLLECTION = "/collection/{}"  # collection id
@@ -65,11 +88,12 @@ COLLECTION_COMMENTS_VOTES = "/collection/comment/votes/{}/{}"  # collection comm
 COLLECTION_COMMENTS_REPLIES = "/collection/comment/replies/{}/{}"  # collection comment id / page
 COLLECTION_COMMENTS_DELETE = "/collection/comment/delete/{}"  # collection comment id
 
-# POST
-COLLECTION_SEARCH = "/search/collections/{}"  # page req: { "query": text, "searchBy": 0}
-
 COLLECTION_COMMENTS_ADD = "/collection/comment/add/{}"  # collection id
 COLLECTION_COMMENTS_EDIT = "/collection/comment/edit/{}"  # collection comment id
+
+COLLECTION_FAVORITE = "/collectionFavorite/all/{}"  # page
+COLLECTION_FAVORITE_ADD = "/collectionFavorite/add/{}"  # collection id
+COLLECTION_FAVORITE_DELETE = "/collectionFavorite/delete/{}"  # collection id
 
 #############    RELEASE    #############
 
@@ -90,16 +114,39 @@ RELEASE_COMMENTS_ADD = "/release/comment/add/{}"  # release id
 RELEASE_COMMENTS_EDIT = "/release/comment/edit/{}"  # release comment id
 
 #############    OTHER    #############
+# TODO OTHER: HISTORY, TOGGLES, EXPORT_BOOKMARKS, IMPORT_BOOKMARKS, CAN_IMPORT_BOOKMARKS
 
 # GET
-VOICE = "/type/all"
+TYPE = "/type/all"
+HISTORY = "/history/{}"  # page
+TOGGLES = "/config/toggles?version_code={}&is_beta={}"  # version_code: int, is_beta: bool
 
-# TODO
-# WATCHING = "/profile/list/all/1/{}"  # + page
-# # "/profile/list/all/1796506/1/{}"
-# IN_PLANS = "/profile/list/all/2/{}"  # + page
-# WATCHED = "/profile/list/all/3/{}"  # + page
-# POSTPONED = "/profile/list/all/4/{}"  # + page
-# THROWN = "/profile/list/all/5/{}"  # + page
-# HISTORY = "/history/{}"  # + page
-# FAVORITE = "favorite/all/{}"  # + page
+# POST
+EXPORT_BOOKMARKS = "/export/bookmarks"  # {"bookmarksExportProfileLists":[0 - favorite, + all in AnixList]}
+IMPORT_BOOKMARKS = "/import/bookmarks"  # {"completed":[],"dropped":[],"holdOn":[],"plans":[],"watching":[],"selected_importer_name":"Shikimori"}
+CAN_IMPORT_BOOKMARKS = "/import/status"  # code: 0 - Yes, code: 2 - no
+
+#############    SEARCH    #############
+# TODO SEARCH: *
+
+# { "query": text, "searchBy": 0}
+# POST
+COLLECTION_SEARCH = "/search/collections/{}"  # page
+RELEASE_SEARCH = "/search/releases/{}"  # page
+FAVORITE_SEARCH = "/search/favorites/{}"  # page
+COLLECTION_SEARCH_FAVORITE = "/search/favoriteCollections/{}"  # page
+LIST_SEARCH = "/search/profile/list/{}/{}"  # list id / page
+PROFILE_SEARCH = "/search/profiles/{}"  # page
+HISTORY_SEARCH = "/search/history/{}"  # page
+
+#############    NOTIFICATIONS    #############
+# TODO NOTIFICATIONS: *
+
+# GET
+NOTIFICATION_READ = "/notification/read"
+NOTIFICATION_COUNT = "/notification/count"
+NOTIFICATION_COLLECTION_COMMENTS = "/notification/collectionComments/{}"  # page
+NOTIFICATION_MY_COLLECTION_COMMENTS = "/notification/my/collection/comments/{}"  # page
+NOTIFICATION_RELEASE_COMMENTS = "/notification/releaseComments/{}"  # page
+NOTIFICATION_EPISODES = "/notification/episodes/{}"  # page
+NOTIFICATION_FRIEND = "/notification/friends/{}"  # page
