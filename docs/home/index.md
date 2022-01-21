@@ -7,7 +7,7 @@ hide:
 
 Используя pip:
 
-* `pip3 install anixart`
+* `pip install -U anixart`
 
 ## Использование:
 

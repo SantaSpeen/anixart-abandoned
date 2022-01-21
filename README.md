@@ -11,8 +11,11 @@
 * Endpoints: [here](https://github.com/SantaSpeen/anixart/blob/master/anixart/endpoints.py)
 * Contacts: [Vk](https://vk.com/l.vindeta "Vk"), [Tg](https://t.me/id01234 "Tg").
 
-### Install: 
-`pip3 install anixart`
+### Install:
+
+Via pip:
+
+* `pip install -U anixart`
 
 ### Use:
 
