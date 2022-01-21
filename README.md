@@ -130,15 +130,7 @@ print(f"Nick: {nick}\nStatus: {status}\nVk: {vk}\nTg: {tg}\nInst: {inst}\nTt: {t
 
 * Profile:
 	- list:
-		* get:
-			- watching
-			- plan
-			- watched
-			- postponed
-			- thrown
-			- history
-			- favorite 
-			- collections
+		* get
 		* add
 	- edit:
 		* avatar
