@@ -62,6 +62,7 @@ class AnixAuth(AnixRequestsHandler):
         res = self.post(SING_IN, payload)
 
         ready = self._parse_response(res)
+        print(str(ready).replace("'", '"').replace("True", "true").replace("False", "false").replace("None", "null"))
 
         uid = ready["profile"]["id"]
         token = ready["profileToken"]["token"]
@@ -113,7 +114,8 @@ class AnixAuth(AnixRequestsHandler):
     def firebase(self, payload=None):
         if payload is None:
             payload = {}
+        payload.update({"token": self.user.token})
         return self._parse_response(self.post(FIREBASE, payload))
 
-    def change_password(self, old, new, token):
-        return self.get(CHANGE_PASSWORD, {"current": old, "new": new, "token": token})
+    def change_password(self, old, new):
+        return self.get(CHANGE_PASSWORD, {"current": old, "new": new, "token": self.user.token})

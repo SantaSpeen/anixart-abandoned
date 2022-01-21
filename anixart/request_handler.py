@@ -45,11 +45,12 @@ def parse_res_code(res, payload, m, h):
     elif code >= 400:
         raise AnixAPIRequestError(f"\n\n"
                                   f"Send this info to author.\n"
-                                  f"URL {m} {res.url}\n"
+                                  f"URL: {m} {res.url}\n"
                                   f"Status code: {res.status_code}\n"
                                   f"Res headers: {res.headers}\n"
                                   f"Req headers: {h}\n"
-                                  f"Payload: {payload}\n")
+                                  f"Server res: {json}\n"
+                                  f"Client req: {payload}\n")
     else:
         raise AnixAPIError(f"Server send error code: {code}; Json: {json}")
 

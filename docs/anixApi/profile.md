@@ -23,30 +23,33 @@
     * [/profile/preference/status/edit]()
     * [/profile/preference/social/edit]()
     * [/profile/preference/avatar/edit]()
+    * [/profile/preference/password/change]()
 
 ## **Endpoints**
 ```python
 # GET
 PROFILE = "/profile/{user_id}"
-PROFILE_NICK_HISTORY = "/profile/login/history/all/{}/{}"  # profile id / page
+PROFILE_NICK_HISTORY = "/profile/login/history/all/{user_id}/{page}" 
 
-PROFILE_BLACKLIST = "/profile/blocklist/all/{}"  # page
-PROFILE_BLACKLIST_ADD = "/profile/blocklist/add/{}" # profile id
-PROFILE_BLACKLIST_REMOVE = "/profile/blocklist/remove/{}" # profile id
+PROFILE_BLACKLIST = "/profile/blocklist/all/{page}"
+PROFILE_BLACKLIST_ADD = "/profile/blocklist/add/{user_id}"
+PROFILE_BLACKLIST_REMOVE = "/profile/blocklist/remove/{user_id}"
 
-FRIENDS = "/profile/friend/all/{}/{}"  # profile id / page
-FRIENDS_RQ_IN = "/profile/friend/requests/in/last"
-FRIENDS_RQ_OUT = "/profile/friend/requests/out/last"
-FRIENDS_SEND = "/profile/friend/request/send/{}"  # profile id
-FRIENDS_REMOVE = "/profile/friend/request/remove/{}"  # profile id
+FRIENDS = "/profile/friend/all/{user_id}/{page}" # TODO
+FRIENDS_RQ_IN = "/profile/friend/requests/in/last"  # TODO
+FRIENDS_RQ_OUT = "/profile/friend/requests/out/last"  # TODO
+FRIENDS_SEND = "/profile/friend/request/send/{user_id}" # TODO
+# FRIENDS_REMOVE = "/profile/friend/request/remove/{user_id}"   # TODO
 
 VOTE_VOTED = "/profile/vote/release/voted/{}/{}"  # profile id / page
 VOTE_UNVOTED = "/profile/vote/release/unvoted/{}"  # page
 
+EDIT_PASSWORD = "/profile/preference/password/change"  # TODO
+
 # POST
-EDIT_STATUS = "/profile/preference/status/edit"
-EDIT_SOCIAL = "/profile/preference/social/edit"
-EDIT_AVATAR = "/profile/preference/avatar/edit"
+EDIT_STATUS = "/profile/preference/status/edit"  # TODO
+EDIT_SOCIAL = "/profile/preference/social/edit"  # TODO
+EDIT_AVATAR = "/profile/preference/avatar/edit"  # TODO
 ```
 ## Profile info
 
@@ -57,7 +60,7 @@ EDIT_AVATAR = "/profile/preference/avatar/edit"
 * Обращение:
     * Протокол: <span style="color:#02e400">GET</span>
     * Необходимо: 
-        * Patch - строка запроса.
+        * patch - строка запроса.
             * User ID: <span style="color:#0060ff">int</span>
     * Пример: `GET {API_URL}/profile/{User ID}`
 * Ответ:
@@ -127,10 +130,10 @@ EDIT_AVATAR = "/profile/preference/avatar/edit"
 * Обращение:
     * Протокол: <span style="color:#02e400">GET</span>
     * Необходимо: 
-        * Patch - строка запроса.
+        * patch - строка запроса.
             * User ID: <span style="color:#0060ff">int</span>
             * Page: <span style="color:#0060ff">int</span>
-    * Пример: `GET {API_URL}/profile/login/history/all{User ID}/{Page}?token={token}`
+    * Пример: `GET {API_URL}/profile/login/history/all{User ID}/{Page}`
 * Ответ:
     * Тип: json
     * Res: 
@@ -164,9 +167,9 @@ EDIT_AVATAR = "/profile/preference/avatar/edit"
 * Обращение:
     * Протокол: <span style="color:#02e400">GET</span>
     * Необходимо: 
-        * Patch - строка запроса.
+        * patch - строка запроса.
             * Page: <span style="color:#0060ff">int</span>
-        * Payload - Данные запроса:
+        * params - Данные запроса:
             * token: <span style="color:#f1c232">str</span>
     * Пример: `GET {API_URL}/profile/blocklist/all/{Page}?token={token}`
 * Ответ:
@@ -199,9 +202,9 @@ EDIT_AVATAR = "/profile/preference/avatar/edit"
 * Обращение:
     * Протокол: <span style="color:#02e400">GET</span>
     * Необходимо: 
-        * Patch - строка запроса.
+        * patch - строка запроса.
             * User ID: <span style="color:#0060ff">int</span>
-        * Payload - Данные запроса:
+        * params - Данные запроса:
             * token: <span style="color:#f1c232">str</span>
     * Пример: `GET {API_URL}/profile/blocklist/add/{User ID}?token={token}`
 * Ответ:
@@ -220,9 +223,9 @@ EDIT_AVATAR = "/profile/preference/avatar/edit"
 * Обращение:
     * Протокол: <span style="color:#02e400">GET</span>
     * Необходимо: 
-        * Patch - строка запроса.
+        * patch - строка запроса.
             * User ID: <span style="color:#0060ff">int</span>
-        * Payload - Данные запроса:
+        * params - Данные запроса:
             * token: <span style="color:#f1c232">str</span>
     * Пример: `GET {API_URL}/profile/blocklist/remove/{User ID}?token={token}`
 * Ответ:
@@ -254,9 +257,9 @@ EDIT_AVATAR = "/profile/preference/avatar/edit"
 * Обращение:
     * Протокол: <span style="color:#02e400">GET</span>
     * Необходимо: 
-        * Patch - строка запроса.
+        * patch - строка запроса.
             * Page: <span style="color:#0060ff">int</span>
-        * Payload - Данные запроса:
+        * params - Данные запроса:
             * token: <span style="color:#f1c232">str</span>
             * sort: <span style="color:#0060ff">int</span>, [подробнее](#sort)
     * Пример: `GET {API_URL}/profile/vote/release/voted/{User ID}/{Page}?sort={sort}&token={token}`
@@ -271,9 +274,9 @@ EDIT_AVATAR = "/profile/preference/avatar/edit"
 * Обращение:
     * Протокол: <span style="color:#02e400">GET</span>
     * Необходимо: 
-        * Patch - строка запроса.
+        * patch - строка запроса.
             * Page: <span style="color:#0060ff">int</span>
-        * Payload - Данные запроса:
+        * params - Данные запроса:
             * token: <span style="color:#f1c232">str</span>
             * sort: <span style="color:#0060ff">int</span>, [подробнее](#sort)
     * Пример: `GET {API_URL}/profile/vote/release/unvoted/{Page}??sort={sort}&token={token}`
