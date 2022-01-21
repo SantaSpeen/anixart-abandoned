@@ -4,8 +4,8 @@ anix_user = AnixUserAccount("login", "password")
 anix = AnixAPI(anix_user)
 
 
-def main(uid):
-    profile = anix.profile.get(uid)['profile']
+def main(_uid):
+    profile = anix.profile.get(_uid)['profile']
     if profile is None:
         print("Id is incorrect")
         return
