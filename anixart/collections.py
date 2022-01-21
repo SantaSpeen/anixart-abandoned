@@ -8,7 +8,7 @@ from .request_handler import AnixRequestsHandler
 
 class AnixCollectionsBase(AnixRequestsHandler):
     def __init__(self, user):
-        super(AnixCollectionsBase, self).__init__(user.token)
+        super(AnixCollectionsBase, self).__init__(user.token, user.session)
         self._get = super().get
         self._post = super().post
 

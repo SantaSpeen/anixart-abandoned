@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import requests
 
 from .auth import AnixAuth
 from .collections import AnixCollection
@@ -7,17 +8,6 @@ from .errors import AnixInitError, AnixAuthError
 from .profile import AnixProfile
 from .release import AnixRelease
 from .request_handler import AnixRequestsHandler
-
-
-class AnixOther(AnixRequestsHandler):
-    def __init__(self, user):
-        super(AnixOther, self).__init__(user.token)
-        self._get = super().get
-        self.get = None
-        self.post = None
-
-    def type(self):
-        return self._get(TYPE).json()
 
 
 class AnixUserAccount:
@@ -71,6 +61,8 @@ class AnixUserAccount:
         self.mail = email
         self.config_file = config_file
 
+        self.session = requests.Session()
+
     def get_login(self):
         return self.login
 
@@ -82,6 +74,17 @@ class AnixUserAccount:
 
     def get_id(self):
         return self.id
+
+
+class AnixOther(AnixRequestsHandler):
+    def __init__(self, user: AnixUserAccount):
+        super(AnixOther, self).__init__(user.token, user.session)
+        self._get = super().get
+        self.get = None
+        self.post = None
+
+    def type(self):
+        return self._get(TYPE).json()
 
 
 class AnixAPIRequests:
@@ -128,5 +131,3 @@ class AnixAPIRequests:
         self.coll = self.collection
         self.other = AnixOther(user)
         self.release = AnixRelease(user)
-
-

@@ -68,8 +68,11 @@ def parse_res_code(res, payload, m, h):
 
 class AnixRequestsHandler:
 
-    def __init__(self, token=None):
-        self.s = requests.Session()
+    def __init__(self, token=None, session=None):
+        if session:
+            self.s = session
+        else:
+            self.s = requests.Session()
         self.s.headers = {
             'User-Agent': f'AnixartAPIWrapper/{__version__}-{__build__} (Linux; Android 12; SantaSpeen anixAPI Build/{__build__})'}
         self.token = token

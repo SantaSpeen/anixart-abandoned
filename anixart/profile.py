@@ -14,7 +14,7 @@ from .request_handler import AnixRequestsHandler
 
 class AnixProfileBase(AnixRequestsHandler):
     def __init__(self, user):
-        super(AnixProfileBase, self).__init__(user.token)
+        super(AnixProfileBase, self).__init__(user.token, user.session)
         self.id = user.id
         self._get = super().get
         self._post = super().post
@@ -69,7 +69,7 @@ class AnixUsersEdit(AnixProfileBase):
 
     def avatar(self, photo):
         print("AnixAPI.profile.edit.avatar() not ready.")
-        return {}
+        return {"photo", photo}
 
         return self._post(EDIT_AVATAR).json()
 

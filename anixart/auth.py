@@ -10,7 +10,7 @@ from .request_handler import AnixRequestsHandler
 class AnixAuth(AnixRequestsHandler):
 
     def __init__(self, user):
-        super(AnixAuth, self).__init__()
+        super(AnixAuth, self).__init__(session=user.session)
         self.user = user
         self.filename = user.config_file
 
