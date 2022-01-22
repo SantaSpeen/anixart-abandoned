@@ -6,7 +6,7 @@ This module implements the API collection requests.
 :license: MIT
 """
 
-from .endpoints import COLLECTION, COLLECTION_RELEASES, COLLECTION_LIST, COLLECTION_SEARCH
+from .endpoints import COLLECTION, COLLECTION_RELEASES, COLLECTION_LIST, SEARCH_COLLECTION
 from .endpoints import COLLECTION_COMMENTS, COLLECTION_COMMENTS_ADD, COLLECTION_COMMENTS_VOTE, COLLECTION_COMMENTS_VOTES
 from .endpoints import COLLECTION_COMMENTS_REPLIES, COLLECTION_COMMENTS_EDIT, COLLECTION_COMMENTS_DELETE
 from .endpoints import COLLECTION_FAVORITE, COLLECTION_FAVORITE_ADD, COLLECTION_FAVORITE_DELETE
@@ -98,7 +98,7 @@ class AnixCollections(AnixCollectionsBase):
 
     def search(self, query, page=0):
         payload = {"query": query, "searchBy": 0}
-        return self._post(COLLECTION_SEARCH.format(str(page)), payload).json()
+        return self._post(SEARCH_COLLECTION.format(str(page)), payload).json()
 
 
 class AnixCollection(AnixCollections):
