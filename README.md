@@ -5,7 +5,7 @@
 
 [![PyPi version](https://badgen.net/pypi/v/anixart/)](https://pypi.com/project/anixart)
 [![PyPI license](https://img.shields.io/pypi/l/anixart.svg)](https://pypi.python.org/pypi/anixart/)
-[![GitHub commits](https://img.shields.io/github/commits-since/SantaSpeen/anixart/0.3.4.svg)](https://GitHub.com/SantaSpeen/anixart/commit/)
+[![GitHub commits](https://img.shields.io/github/commits-since/SantaSpeen/anixart/0.3.5.svg)](https://GitHub.com/SantaSpeen/anixart/commit/)
 [![Documentation Status](https://readthedocs.org/projects/anixart/badge/?version=latest)](https://anixart.readthedocs.io/?badge=latest)
 
 Pip:
@@ -18,8 +18,8 @@ Pip:
 **Документация на русском:** [ТЫК](https://anixart.readthedocs.io/ "тык")
 
 * Description:
-    * **EN**: Wrapper for using the anixart API, the best application for watching anime in the CIS countries. From myself I can say that the library was created for informational purposes only. I do not advise you to do such things as cheat likes,have respect for the project. If complaints are received from the project administration, then access to the repository will be limited.
     * **RU**: Враппер для использования anixart API, наилучшего приложения для просмотра аниме на территории стран СНГ.  От себя могу сказать, что библиотека создана лишь для ознакомления. Не советую заниматься такимим вещами как накрутка лайков, имейте уважение к проекту. Если поступят жалобы от администрации проекта, то доступ к репозиторию будет ограничен.
+    * **EN**: Wrapper for using the anixart API, the best application for watching anime in the CIS countries. From myself I can say that the library was created for informational purposes only. I do not advise you to do such things as cheat likes,have respect for the project. If complaints are received from the project administration, then access to the repository will be limited.
 
 
 * Endpoints: [here](https://github.com/SantaSpeen/anixart/blob/master/anixart/endpoints.py)
@@ -52,4 +52,4 @@ reg_date = profile['register_date']
 
 print(f"Nick: {nick}\nStatus: {status}\nVk: {vk}\nTg: {tg}\nInst: {inst}\nTt: {tt}\nRegister date: {reg_date}")
 ```
-* More about API: [here](https://github.com/SantaSpeen/anixart/blob/master/LibApiDoc.md "here")
+* #### **More about usage:** [here](https://github.com/SantaSpeen/anixart/blob/master/LibApiDoc.md "here")

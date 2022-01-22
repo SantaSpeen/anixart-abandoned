@@ -8,7 +8,7 @@
 ## Anixart API Wrapper
 
 ### 22.01.2022
-#### Version: 0.3.5, Build: 540
+#### Version: 0.3.5, Build: 568
 
 * Добавлен класс `anix.profile.blocklist` с методами:
     * get
