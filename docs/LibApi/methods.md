@@ -34,7 +34,10 @@
 
 - <span style="color:#7CD9B4">●</span> get -> `anix.profile.get(uid)`; Получить профиль по uid.
 - <span style="color:#7CD9B4">●</span> history -> `anix.profile.history(uid, page)`; Получить историю никнеймов пользователя.
-- <span style="color:#7CD9B4">●</span> blocklist  -> `anix.profile.blocklist(page)`; Получить свой чёрный список.
+- <span style="color:#7CD9B4">●</span> blocklist  -> `anix.profile.bl`:
+     * get -> `anix.profile.bl.get(page)`; Получить свой чёрный список.
+     * add -> `anix.profile.bl.add(uid)`; Добавить в чёрный список.
+     * remove -> `anix.profile.bl.remove(uid)`; Убрать из чёрного списка.
 - <span style="color:#7CD9B4">●</span> friends `anix.profile.friends`: 
      * get -> `anix.profile.friends.get(uid, page)`; Получить список друзей по uid.
      * incoming -> `anix.profile.friends.incoming()`; Получить входящие заявки в друзья.
@@ -48,7 +51,8 @@
 - <span style="color:#7CD9B4">●</span> edit `anix.profile.edit`: 
      * status -> `anix.profile.edit.status(text)`; Отредактировать статус.
      * social -> `anix.profile.edit.social(instId, tgId, vkId, ttId)`; Отредактировать контакты.
-
+- <span style="color:#7CD9B4">●</span> list `anix.profile.list`:
+    * get -> `anix.profile.list.get(uid, list_id, page)`; Получить релизы из списков
 ### Collections
 **Класс для работы с коллекциями** 
 
@@ -68,6 +72,10 @@
      * replies -> `anix.coll.comments.replies(ccmid, page)`; Responses to a comment.
      * edit -> `anix.coll.comments.edit(ccmid, message, spoiler)`; Edit a comment.
      * delete -> `anix.coll.comments.delete(ccmid)`; Delete a comment.
+- <span style="color:#7CD9B4">●</span> favorite `anix.coll.favorite`:
+    * get -> `anix.coll.favorite.get(page)`; Получить избранные коллекции.
+    * add -> `anix.coll.favorite.add(cid)`; Добавить коллекцию в избранные.
+    * delete ->`anix.coll.favorite.delete(cid)`; Удалить коллекцию из избранных.
   
   
 ### Release
@@ -101,3 +109,5 @@
 Базовый класс -> `anix.other`
 
 - <span style="color:#7CD9B4">●</span> voice -> `anix.other.type()`; Получить список всех возможных озвучек.
+- <span style="color:#7CD9B4">●</span> history -> `anix.other.history(page)`; Получить свою историю просмотров.
+- <span style="color:#7CD9B4">●</span> toggles -> `anix.other.toggles(app_ver: int, is_beta: bool)`; Заметки о новой версии.

@@ -1,6 +1,14 @@
 # -*- coding: utf-8 -*-
 
+"""
+This module implements the API auth requests.
+:copyright: (c) 2022 by Maxim Khomutov.
+:license: MIT
+"""
+
 import json
+import logging
+import os.path
 
 from .endpoints import SING_UP, SING_UP_VERIFY, SING_IN, FIREBASE, CHANGE_PASSWORD, PROFILE
 from .errors import AnixAuthError
@@ -10,7 +18,7 @@ from .request_handler import AnixRequestsHandler
 class AnixAuth(AnixRequestsHandler):
 
     def __init__(self, user):
-        super(AnixAuth, self).__init__(session=user.session)
+        super(AnixAuth, self).__init__(None, user._session, "anixart.auth.AnixAuth")
         self.user = user
         self.filename = user.config_file
 
@@ -35,11 +43,11 @@ class AnixAuth(AnixRequestsHandler):
         return data
 
     def _open_config(self):
-        try:
+        if os.path.isfile(self.filename):
             with open(self.filename, "r") as read_file:
                 data = json.load(read_file)
             return data
-        except Exception:
+        else:
             return False
 
     def sing_in(self):
@@ -49,9 +57,9 @@ class AnixAuth(AnixRequestsHandler):
         if config:
             uid = config.get("id")
             token = config.get("token")
-            if not self.get(PROFILE.format(uid), payload={"token": token}).json().get("is_my_profile") or \
+            if not self.get(PROFILE.format(uid), token=token).json().get("is_my_profile") or \
                     self.user.login != config.get("login"):
-                print("[ANIXART API] Invalid config file. Re login.")
+                logging.getLogger("anixart.api.AnixAPI").debug("Invalid config file. Re login.")
 
             else:
                 self.user.id = uid

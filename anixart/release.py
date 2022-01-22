@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+
+"""
+This module implements the API release requests.
+:copyright: (c) 2022 by Maxim Khomutov.
+:license: MIT
+"""
+
 from .endpoints import RELEASE, RELEASE_VOTE_ADD, RELEASE_VOTE_DELETE, RELEASE_RANDOM, RELEASE_COMMENTS_REPLIES, \
     RELEASE_COMMENTS_EDIT, RELEASE_COMMENTS_DELETE, RELEASE_COMMENTS_VOTES, RELEASE_COMMENTS_VOTE, RELEASE_COMMENTS_ADD, \
     RELEASE_COMMENTS
@@ -7,7 +15,7 @@ from .request_handler import AnixRequestsHandler
 
 class AnixReleaseBase(AnixRequestsHandler):
     def __init__(self, user):
-        super(AnixReleaseBase, self).__init__(user.token, user.session)
+        super(AnixReleaseBase, self).__init__(user.token, user._session)
         self.id = user.id
         self._get = super().get
         self._post = super().post
@@ -85,5 +93,18 @@ class AnixRelease(AnixReleases):
 
     def __init__(self, user):
         super(AnixRelease, self).__init__(user)
-        self.vote = AnixReleasesVote(user)
-        self.comments = AnixReleaseComments(user)
+        self.__user = user
+        self.__vote = None
+        self.__comments = None
+
+    @property
+    def vote(self):
+        if self.__vote is None:
+            self.__vote = AnixReleasesVote(self.__user)
+        return self.__vote
+
+    @property
+    def comments(self):
+        if self.__comments is None:
+            self.__comments = AnixReleaseComments(self.__user)
+        return self.__comments

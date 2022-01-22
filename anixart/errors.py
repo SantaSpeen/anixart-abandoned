@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
 
+"""
+:copyright: (c) 2022 by Maxim Khomutov.
+:license: MIT
+"""
+
+
 class AnixInitError(Exception):
     pass
 

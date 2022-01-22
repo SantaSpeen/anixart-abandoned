@@ -3,11 +3,6 @@
      * add
 ```python
 # GET
-PROFILE_BLACKLIST_ADD = "/profile/blocklist/add/{}"  # profile id
-PROFILE_BLACKLIST_REMOVE = "/profile/blocklist/remove/{}"  # profile id
-
-LISTS = "/profile/list/all/{}/{}/{}"  # profile id / list id / page
-
 SETTINGS_NOTIFICATION = "/profile/preference/notification/my"
 SETTINGS_RELEASE_NOTIFICATION = "/profile/preference/notification/episode/edit"
 SETTINGS_RELEASE_FIRST_NOTIFICATION = "/profile/preference/notification/episode/first/edit"
@@ -22,10 +17,6 @@ SETTINGS_COLLECTION_NOTIFICATION = "/profile/preference/notification/my/collecti
      * edit
      * delete
 ```python
-# GET
-COLLECTION_FAVORITE = "/collectionFavorite/all/{}"  # page
-COLLECTION_FAVORITE_ADD = "/collectionFavorite/add/{}"  # collection id
-COLLECTION_FAVORITE_DELETE = "/collectionFavorite/delete/{}"  # collection id
 ```
 
 ### Discover
@@ -34,10 +25,14 @@ COLLECTION_FAVORITE_DELETE = "/collectionFavorite/delete/{}"  # collection id
 - discussing
 - comments
 - schedule
+```python
 
+```
 ### Filter
 - get
+```python
 
+```
 ### Episode
 - get: 
      * voice
@@ -46,7 +41,9 @@ COLLECTION_FAVORITE_DELETE = "/collectionFavorite/delete/{}"  # collection id
 - set:
      * watch
      * unwatch
+```python
 
+```
 ### Search
 ```python
 # data: { "query": text, "searchBy": 0}
@@ -61,7 +58,7 @@ PROFILE_SEARCH = "/search/profiles/{}"  # page
 HISTORY_SEARCH = "/search/history/{}"  # page
 ```
 
-### Notification
+### Notifications
 ```python
 # GET
 NOTIFICATION_READ = "/notification/read"
@@ -75,13 +72,22 @@ NOTIFICATION_FRIEND = "/notification/friends/{}"  # page
 
 ### Other
 ```python
-# GET
-HISTORY = "/history/{}"  # page
-TOGGLES = "/config/toggles?version_code={}&is_beta={}"  # version_code: int, is_beta: bool
-
 # POST
 EXPORT_BOOKMARKS = "/export/bookmarks"  # {"bookmarksExportProfileLists":[0 - favorite, + all in AnixList]}
 IMPORT_BOOKMARKS = "/import/bookmarks"  # {"completed":[],"dropped":[],"holdOn":[],"plans":[],"watching":[],"selected_importer_name":"Shikimori"}
 CAN_IMPORT_BOOKMARKS = "/import/status"  # code: 0 - Yes, code: 2 - no
 
+```
+
+### Search
+```python
+# { "query": text, "searchBy": 0}
+# POST
+COLLECTION_SEARCH = "/search/collections/{}"  # page
+RELEASE_SEARCH = "/search/releases/{}"  # page
+FAVORITE_SEARCH = "/search/favorites/{}"  # page
+COLLECTION_SEARCH_FAVORITE = "/search/favoriteCollections/{}"  # page
+LIST_SEARCH = "/search/profile/list/{}/{}"  # list id / page
+PROFILE_SEARCH = "/search/profiles/{}"  # page
+HISTORY_SEARCH = "/search/history/{}"  # page
 ```

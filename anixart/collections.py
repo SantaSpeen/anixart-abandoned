@@ -1,14 +1,21 @@
 # -*- coding: utf-8 -*-
 
+"""
+This module implements the API collection requests.
+:copyright: (c) 2022 by Maxim Khomutov.
+:license: MIT
+"""
+
 from .endpoints import COLLECTION, COLLECTION_RELEASES, COLLECTION_LIST, COLLECTION_SEARCH
 from .endpoints import COLLECTION_COMMENTS, COLLECTION_COMMENTS_ADD, COLLECTION_COMMENTS_VOTE, COLLECTION_COMMENTS_VOTES
 from .endpoints import COLLECTION_COMMENTS_REPLIES, COLLECTION_COMMENTS_EDIT, COLLECTION_COMMENTS_DELETE
+from .endpoints import COLLECTION_FAVORITE, COLLECTION_FAVORITE_ADD, COLLECTION_FAVORITE_DELETE
 from .request_handler import AnixRequestsHandler
 
 
 class AnixCollectionsBase(AnixRequestsHandler):
     def __init__(self, user):
-        super(AnixCollectionsBase, self).__init__(user.token, user.session)
+        super(AnixCollectionsBase, self).__init__(user.token, user._session)
         self._get = super().get
         self._post = super().post
 
@@ -24,7 +31,7 @@ class AnixCollectionsBase(AnixRequestsHandler):
 
 class AnixCollectionsComments(AnixCollectionsBase):
 
-    def get(self, cid, page=0):
+    def get(self, cid, page=0, **kwargs):
         cid, page = self._parse_args(cid, page)
         return self._get(COLLECTION_COMMENTS.format(cid, page)).json()
 
@@ -61,9 +68,23 @@ class AnixCollectionsComments(AnixCollectionsBase):
         return self._get(COLLECTION_COMMENTS_DELETE.format(ccmid)).json()
 
 
+class AnixCollectionsFavorite(AnixCollectionsBase):
+
+    def get(self, page=0, **kwargs):
+        return self._get(COLLECTION_FAVORITE.format(str(page))).json()
+
+    def add(self, cid):
+        cid = self._parse_cid(cid)
+        return self._get(COLLECTION_FAVORITE_ADD.format(cid)).json()
+
+    def delete(self, cid):
+        cid = self._parse_cid(cid)
+        return self._get(COLLECTION_FAVORITE_DELETE.format(cid)).json()
+
+
 class AnixCollections(AnixCollectionsBase):
 
-    def get(self, cid):
+    def get(self, cid, **kwargs):
         cid = self._parse_cid(cid)
         return self._get(COLLECTION.format(cid)).json()
 
@@ -84,4 +105,18 @@ class AnixCollection(AnixCollections):
 
     def __init__(self, user):
         super().__init__(user)
-        self.comments = AnixCollectionsComments(user)
+        self.__user = user
+        self.__comments = None
+        self.__favorite = None
+
+    @property
+    def comments(self):
+        if self.__comments is None:
+            self.__comments = AnixCollectionsComments(self.__user)
+        return self.__comments
+
+    @property
+    def favorite(self):
+        if self.__favorite is None:
+            self.__favorite = AnixCollectionsFavorite(self.__user)
+        return self.__favorite

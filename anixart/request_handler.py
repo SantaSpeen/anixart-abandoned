@@ -6,6 +6,8 @@ This module implements the API requests.
 :license: MIT
 """
 
+import logging
+
 import requests
 
 from .__version__ import __version__, __build__
@@ -13,8 +15,10 @@ from .endpoints import API_URL
 from .errors import AnixAPIRequestError, AnixAPIError, AnixAuthError, AnixAuthLoginAlreadyRegistered, \
     AnixAuthLoginEnterEmail
 
+_log_name = "file:%-28s -> %s" % ("<anixart.request_handler:%-3i>", "%s")
 
-def parse_res_code(res, payload, m, h):
+
+def _parse_res_code(res, payload, m, h):
     json = res.json()
 
     error = json.get("error")
@@ -68,49 +72,67 @@ def parse_res_code(res, payload, m, h):
 
 class AnixRequestsHandler:
 
-    def __init__(self, token=None, session=None):
+    def __init__(self, token: str = None, session: requests.Session = None, _log_class="anixart.request_handler.AnixRequestsHandler"):
+        self.__log = logging.getLogger(_log_class)
+        self.__log.debug(_log_name, 76, f"__init__ - INIT from {self}")
         if session:
-            self.s = session
+            self.__session = session
         else:
-            self.s = requests.Session()
-        self.s.headers = {
+            self.__log.debug(_log_name, 81, "Create new session.")
+            self.__session = requests.Session()
+        self.__session.headers = {
             'User-Agent': f'AnixartAPIWrapper/{__version__}-{__build__} (Linux; Android 12; SantaSpeen anixAPI Build/{__build__})'}
-        self.token = token
+        self.__token = token
 
-    def post(self, method, payload=None, is_json=False, **kwargs):
+    def post(self, method: str, payload: dict = None, is_json: bool = False, **kwargs):
         if payload is None:
             payload = {}
 
-        tok = ""
+        url = API_URL + method
+
         if payload.get("token") is None:
-            if self.token is not None:
-                payload.update({"token": self.token})
-                tok = "?token=" + self.token
-
-        if is_json:
-            self.s.headers.update({"Content-Type": "application/json; charset=UTF-8"})
-            self.s.headers.update({"Content-Length": str(len(str(payload)))})
-            res = self.s.post(API_URL + method + tok, json=payload, **kwargs)
+            if self.__token is not None:
+                payload.update({"token": self.__token})
+                url += "?token=" + self.__token
         else:
-            res = self.s.post(API_URL + method + tok, data=payload, **kwargs)
+            token = kwargs.get("token")
+            if token is not None:
+                payload.update({"token": token})
+                url += "?token=" + token
 
-        parse_res_code(res, payload, "POST", self.s.headers)
+        kwargs = {"url": url}
+        if is_json:
+            self.__session.headers.update({"Content-Type": "application/json; charset=UTF-8"})
+            self.__session.headers.update({"Content-Length": str(len(str(payload)))})
+            kwargs.update({"json": payload})
+        else:
+            kwargs.update({"data": payload})
 
-        self.s.headers["Content-Type"] = ""
-        self.s.headers["Content-Length"] = ""
+        self.__log.debug(_log_name, 108, f"{'json' if is_json else ''} POST {method}; {payload}")
+        res = self.__session.post(**kwargs)
+
+        _parse_res_code(res, payload, "POST", self.__session.headers)
+
+        self.__session.headers["Content-Type"] = ""
+        self.__session.headers["Content-Length"] = ""
 
         return res
 
-    def get(self, method, payload=None, **kwargs):
+    def get(self, method: str, payload: dict = None, **kwargs):
         if payload is None:
             payload = {}
 
         if payload.get("token") is None:
-            if self.token is not None:
-                payload.update({"token": self.token})
+            if self.__token is not None:
+                payload.update({"token": self.__token})
+        else:
+            token = kwargs.get("token")
+            if token is not None:
+                payload.update({"token": token})
 
-        res = self.s.get(API_URL + method, params=payload, **kwargs)
+        self.__log.debug(_log_name, 130, f"GET {method}; {payload}")
+        res = self.__session.get(API_URL + method, params=payload)
 
-        parse_res_code(res, payload, "GET", self.s.headers)
+        _parse_res_code(res, payload, "GET", self.__session.headers)
 
         return res
