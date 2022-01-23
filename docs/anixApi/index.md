@@ -2,11 +2,11 @@
 
 ## Список доступных классов:
 
-1. [Auth](/anixApi/auth/)
-2. [Profile](/anixApi/profile/#_1) <span style="color:#f1c232">Класс описан частично.</span>
-3. [Collection](/anixApi/collections/) <span style="color:red">Класс не описан.</span>
-4. [Release](/anixApi/release/) <span style="color:red">Класс не описан.</span>
-5. [Other](/anixApi/other/)
+1. [Auth](methods/auth/)
+2. [Profile](methods/profile/#_1) <span style="color:#f1c232">Класс описан частично.</span>
+3. [Collection](methods/collections/) <span style="color:red">Класс не описан.</span>
+4. [Release](methods/release/) <span style="color:red">Класс не описан.</span>
+5. [Other](methods/other/)
 
 ## Быстрый старт
 
