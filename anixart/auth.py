@@ -15,27 +15,28 @@ from .errors import AnixAuthError
 from .request_handler import AnixRequestsHandler
 
 
+def _parse_response(data):
+    ready = data.json()
+    ready.update({"status_code": data.status_code})
+
+    code = ready['code']
+    if code != 0:
+        if code == 2:
+            raise AnixAuthError("Incorrect login.")
+        if code == 3:
+            raise AnixAuthError("Incorrect password.")
+        print(data.text + "\n\n")
+        raise AnixAuthError("Unknown auth error.")
+
+    return ready
+
+
 class AnixAuth(AnixRequestsHandler):
 
     def __init__(self, user):
         super(AnixAuth, self).__init__(None, user._session, "anixart.auth.AnixAuth")
         self.user = user
         self.filename = user.config_file
-
-    def _parse_response(self, data):
-        ready = data.json()
-        ready.update({"status_code": data.status_code})
-
-        code = ready['code']
-        if code != 0:
-            if code == 2:
-                raise AnixAuthError("Incorrect login.")
-            if code == 3:
-                raise AnixAuthError("Incorrect password.")
-            print(data.text + "\n\n")
-            raise AnixAuthError("Unknown auth error.")
-
-        return ready
 
     def _save_config(self, data):
         with open(self.filename, "w") as f:
@@ -57,7 +58,7 @@ class AnixAuth(AnixRequestsHandler):
         if config:
             uid = config.get("id")
             token = config.get("token")
-            if not self.get(PROFILE.format(uid), token=token).json().get("is_my_profile") or \
+            if not self.get(PROFILE.format(uid), {"token": token}).json().get("is_my_profile") or \
                     self.user.login != config.get("login"):
                 logging.getLogger("anixart.api.AnixAPI").debug("Invalid config file. Re login.")
 
@@ -69,7 +70,7 @@ class AnixAuth(AnixRequestsHandler):
         payload = {"login": self.user.login, "password": self.user.password}
         res = self.post(SING_IN, payload)
 
-        ready = self._parse_response(res)
+        ready = _parse_response(res)
 
         uid = ready["profile"]["id"]
         token = ready["profileToken"]["token"]
@@ -89,7 +90,7 @@ class AnixAuth(AnixRequestsHandler):
         print(f"Code sent to {email}.")
         code = input("Please input code from mail: ")
         res2 = self.sing_up_verify(code, res1["hash"], email, True)
-        ready = self._parse_response(res2)
+        ready = _parse_response(res2)
 
         uid = ready["profile"]["id"]
         token = ready["profileToken"]["token"]
@@ -122,7 +123,7 @@ class AnixAuth(AnixRequestsHandler):
         if payload is None:
             payload = {}
         payload.update({"token": self.user.token})
-        return self._parse_response(self.post(FIREBASE, payload))
+        return _parse_response(self.post(FIREBASE, payload))
 
     def change_password(self, old, new):
         return self.get(CHANGE_PASSWORD, {"current": old, "new": new, "token": self.user.token})

@@ -154,7 +154,6 @@ COLLECTION_MY_CREATE = "/collectionMy/create"
 COLLECTION_MY_EDIT = "/collectionMy/edit/{}"  # collectionId
 COLLECTION_MY_EDIT_IMAGE = "/collectionMy/editImage/{}"  # collectionId
 
-
 #############    RELEASE    #############
 
 # GET
@@ -200,7 +199,7 @@ IMPORT_BOOKMARKS = "/import/bookmarks"  # {"completed":[],"dropped":[],"holdOn":
 CAN_IMPORT_BOOKMARKS = "/import/status"  # code: 0 - Yes, code: 2 - no
 
 # Not Checked
-#GET
+# GET
 FILTER = "/filter/{}"  # page {token, genres: [], studio, category, status, year, episodes, sort, country, season, duration, ratings: [], extended_mode: bool}
 RELATED = "related/{}/{}"  # relatedId/page
 
@@ -256,22 +255,22 @@ DISCOVER_WATCING = "/discover/watching/{}"  # page
 # TODO EpisodeApi.kt: *
 
 # Ой, я заебался, я спать..
-# Здесь методы из com.swiftsoft.anixartd.network.api.EpisodeApi
+# Здесь методы из com.swiftsoft.anixartd.network.api.EpisodeApi.kt
 # Если надо, переделай так как тебе надо
 
 # Not Checked
 # GET
-#@GET("episode/target/{releaseId}/{sourceId}/{position}")
-#@GET("episode/{releaseId}/{typeId}/{sourceId}")
-#@GET("episode/{releaseId}")
-#@GET("episode/updates/{releaseId}/{page}")
+# @GET("episode/target/{releaseId}/{sourceId}/{position}")
+# @GET("episode/{releaseId}/{typeId}/{sourceId}")
+# @GET("episode/{releaseId}")
+# @GET("episode/updates/{releaseId}/{page}")
 
 # POST
-#@POST("episode/report/{releaseId}/{sourceId}/{position}")
-#@POST("episode/unwatch/{releaseId}/{sourceId}/{position}")
-#@POST("episode/unwatch/{releaseId}/{sourceId}")
-#@POST("episode/watch/{releaseId}/{sourceId}/{position}")
-#@POST("episode/watch/{releaseId}/{sourceId}")
+# @POST("episode/report/{releaseId}/{sourceId}/{position}")
+# @POST("episode/unwatch/{releaseId}/{sourceId}/{position}")
+# @POST("episode/unwatch/{releaseId}/{sourceId}")
+# @POST("episode/watch/{releaseId}/{sourceId}/{position}")
+# @POST("episode/watch/{releaseId}/{sourceId}")
 
 #############    FAVORITE    #############
 # TODO FAVORITE: *

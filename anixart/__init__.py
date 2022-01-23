@@ -28,24 +28,36 @@ Usage:
 from .__version__ import __license__, __description__
 from .__version__ import __version__, __url__, __build__, __title__, __author__, __author_email__, __copyright__
 
+from .api import AnixUserAccount, AnixAPI
+from .endpoints import AnixComment, AnixProfileVotedSort, AnixList
+
 
 def check_update():
     import requests
-    secret = "65f1c508f136b74025215a95a1e551bc5261b4dfb68258465db34d7cd666464a"
-    url = "http://mc.santaspeen.ru:81/api/anixart/version.last?v=1.0"
-    r = requests.get(url, headers={"anixart-secret": secret}).json()
-    if r['object']['is_last']:
-        ver = r['object']['last_version']
-        print(f"Found new version: {ver}!! Installed version: {__version__}.")
-        ans = input("Do you need update Anixart API lib (y/n): ")
-        if ans.lower() == "y":
-            print("\nUpdating Anixart API lib.\n")
-            import os
-            os.system("pip3 install -U anixart")
-            print("\n\n\nAnixart API lib updated..\nReload script!\n")
+    secret = "721b36f6e91e82ca6599222515f441cf8b2bc9bcfa7e10980e4e45d38286a2e4"
+    url = "http://santaspeen.ru:81/api/anixart/version.last?v=1.0"
+    try:
+        r = requests.get(url, headers={"anixart-secret": secret}).json()
+        print(r)
+        if not r['object']['is_last']:
+            last_version = r['object']['last_version'][0]
+            version = r['object']['version'][0]
+            print(f"Found new version: {last_version}!!\n"
+                  f"Installed version: {version}.")
+            ans = input("Do you need update Anixart API lib (y/n): ")
+            if ans.lower() == "y":
+                print("\nUpdating Anixart API lib.\n")
+                import os
+                print("$ pip3 install -U anixart")
+                os.system("pip3 install -U anixart")
+                print("\n\n"
+                      "Anixart API lib updated..\n"
+                      "Reload script!\n")
+                exit(0)
+            else:
+                print("Abort.")
         else:
-            print("Abort.")
-
-
-from .api import AnixUserAccount, AnixAPI
-from .endpoints import AnixComment, AnixProfileVotedSort, AnixList
+            print("Your Anixart API lib has last version.")
+    except requests.exceptions.ConnectionError:
+        print("Can not connect to santaspeen api.")
+        del requests

@@ -4,12 +4,12 @@
     - <span style="color:#7CD9B4">●</span> - <span style="color:#7CD9B4">**_anixart_**</span>
     - <span style="color:#F36374">●</span> - <span style="color:#F36374">**_aniu_**</span>
 * Класс документации.
-    - <span style="color:blue">●</span> - <span style="color:blue">**_[login](/api/methods/#me)_**</span>
-    - <span style="color:blue">●</span> - <span style="color:blue">**_[auth](/api/methods/#auth)_**</span>
-    - <span style="color:blue">●</span> - <span style="color:blue">**_[profile](/api/methods/#profile)_**</span>
-    - <span style="color:blue">●</span> - <span style="color:blue">**_[collections](/api/methods/#collections)_**</span>
-    - <span style="color:blue">●</span> - <span style="color:blue">**_[release](/api/methods/#release)_**</span>
-    - <span style="color:blue">●</span> - <span style="color:blue">**_[other](/api/methods/#other)_**</span>
+    - <span style="color:blue">●</span> - <span style="color:blue">**_[login](/LibApi/methods/#me)_**</span>
+    - <span style="color:blue">●</span> - <span style="color:blue">**_[auth](/LibApi/methods/#auth)_**</span>
+    - <span style="color:blue">●</span> - <span style="color:blue">**_[profile](/LibApi/methods/#profile)_**</span>
+    - <span style="color:blue">●</span> - <span style="color:blue">**_[collections](/LibApi/methods/#collections)_**</span>
+    - <span style="color:blue">●</span> - <span style="color:blue">**_[release](/LibApi/methods/#release)_**</span>
+    - <span style="color:blue">●</span> - <span style="color:blue">**_[other](/LibApi/methods/#other)_**</span>
 
 ## **Условные обозначения**
 1. **uid** - _int_; User Id, _**default**_: `anix.me.get_id()`
