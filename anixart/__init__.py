@@ -34,7 +34,7 @@ from .endpoints import AnixComment, AnixProfileVotedSort, AnixList
 
 def check_update():
     import requests
-    secret = "721b36f6e91e82ca6599222515f441cf8b2bc9bcfa7e10980e4e45d38286a2e4"
+    secret = "65f1c508f136b74025215a95a1e551bc5261b4dfb68258465db34d7cd666464a"
     url = "http://santaspeen.ru:81/api/anixart/version.last?v=1.0"
     try:
         r = requests.get(url, headers={"anixart-secret": secret}).json()
