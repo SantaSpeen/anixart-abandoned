@@ -13,16 +13,16 @@
 * <span style="color:#7CD9B4">●</span> token -> `anix.me.get_token()`
 * <span style="color:#7CD9B4">●</span> id -> `anix.me.get_id()`
 
-### Auth
+### Auth - Класс убран по просьбе администратора проекта.
 **Класс для авторизации.** 
 
 Метки: <span style="color:#7CD9B4">**_anixart_**</span>, <span style="color:blue">**_auth_**</span>
 
 Базовый класс -> `anix.auth`
 
-- <span style="color:#7CD9B4">●</span> Sing In -> `anix.auth.sing_in()`; **Не используйте этот метод.** Библиотека сама входит в аккаунт.
-- <span style="color:#7CD9B4">●</span> Sing Up -> `anix.auth.sing_up()`; **Не используйте этот метод.** Библиотека сама регистрирует аккаунт.
-- <span style="color:#7CD9B4">●</span> Firebase -> `anix.auth.firebase()`; 
+- <span style="color:#7CD9B4">●</span> <_err_build> -> `anix.<_err_build>` ;'';'
+- <span style="color:#7CD9B4">●</span> <_err_build> -> `anix.<_err_build>`;asdfaf dx
+- <span style="color:#7CD9B4">●</span> <_err_build> -> `anix.auth.<_err_build>`; 
 - <span style="color:#7CD9B4">●</span> Change password -> `anix.auth.change_password(old_pass, new_pass)`; Смена пароля.
 
 ### Profile

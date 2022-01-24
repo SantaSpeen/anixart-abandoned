@@ -3,7 +3,9 @@ from datetime import datetime
 
 from anixart import AnixUserAccount, AnixAPI
 
-anix_user = AnixUserAccount("login", "password")
+anix_user = AnixUserAccount()
+anix_user.id = 12345
+anix_user.token = "token"
 anix = AnixAPI(anix_user)
 
 print("\n\nAnixart time bot.")

@@ -21,7 +21,7 @@ from .request_handler import AnixRequestsHandler
 
 class AnixProfileBase(AnixRequestsHandler):
     def __init__(self, user, part: str):
-        super(AnixProfileBase, self).__init__(user.token, user._session, "anixart.profile."+part)
+        super(AnixProfileBase, self).__init__(user.token, user.session, "anixart.profile." + part)
         self.id = user.id
         self._get = super().get
         self._post = super().post

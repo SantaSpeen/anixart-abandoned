@@ -4,10 +4,10 @@
 
 ## **Оглавление класса**
 
-* [/auth/signUp](#authsignup), Для регистрации аккаунта.
-* [/auth/verify](#authverify), Для подтверждения регистрации аккаунта.
-* [/auth/signIn](#authsignin), Для входа в аккаунт.
-* [/auth/firebase](#authfirebase), Для <_err_found_data>
+* [Метод убран по просьбе администратора проекта.](#authsignup), Для регистрации аккаунта.
+* [Метод убран по просьбе администратора проекта.](#authverify), Для подтверждения регистрации аккаунта.
+* [Метод убран по просьбе администратора проекта.](#authsignin), Для входа в аккаунт.
+* [Метод убран по просьбе администратора проекта.](#authfirebase), Для <_err_found_data>
 
 ## **Endpoints**
 
@@ -15,18 +15,18 @@
 ################   AUTH   ################
 
 # POST
-SING_UP = "/auth/signUp"
-SING_UP_VERIFY = "/auth/verify"
-SING_IN = "/auth/signIn"
-FIREBASE = "/auth/firebase"
+SING_UP = "Метод убран по просьбе администратора проекта."
+SING_UP_VERIFY = "Метод убран по просьбе администратора проекта."
+SING_IN = "Метод убран по просьбе администратора проекта."
+FIREBASE = "Метод убран по просьбе администратора проекта."
 ```
 
 ## **Auth**
 
-### **/auth/signUp**
+### **Метод убран по просьбе администратора проекта.**
 
 Метод для регистрации аккаунта. <br />
-После использования этого метода нужно подтвердить почту методом [/auth/verify](#authverify).
+После использования этого метода нужно подтвердить почту методом [Метод убран по просьбе администратора проекта.](#authverify).
 
 * Обращение:
     * Протокол: <span style="color:#02e400">POST</span>
@@ -35,7 +35,7 @@ FIREBASE = "/auth/firebase"
               * login: <span style="color:#f1c232">str</span>
               * password: <span style="color:#f1c232">str</span>
               * email: <span style="color:#f1c232">str</span>
-    * Пример: `POST {API_URL}/auth/signUp}`
+    * Пример: `POST Метод убран по просьбе администратора проекта.}`
 * Ответ:
     * Тип: json
     * Res: 
@@ -47,7 +47,7 @@ FIREBASE = "/auth/firebase"
 }
 ```
 
-### **/auth/verify**
+### **Метод убран по просьбе администратора проекта.**
 
 Метод для подтверждения регистрации аккаунта.
 
@@ -59,8 +59,8 @@ FIREBASE = "/auth/firebase"
             * login: <span style="color:#f1c232">str</span>
             * password: <span style="color:#f1c232">str</span>
             * email: <span style="color:#f1c232">str</span>
-            * hash: <span style="color:#f1c232">str</span>, передаётся в ответе от [/auth/signUp](#authsignup)
-    * Пример: `POST {API_URL}/auth/signUp}`
+            * hash: <span style="color:#f1c232">str</span>, передаётся в ответе от [Метод убран по просьбе администратора проекта.](#authsignup)
+    * Пример: `POST Метод убран по просьбе администратора проекта.}`
 * Ответ:
     * Тип: json
     * Res: 
@@ -127,7 +127,7 @@ FIREBASE = "/auth/firebase"
   }
 }
 ```
-### **/auth/signIn**
+### **Метод убран по просьбе администратора проекта.**
 
 Метод для входа в аккаунт.
 
@@ -137,7 +137,7 @@ FIREBASE = "/auth/firebase"
         * Data - Данные запроса:
             * login: <span style="color:#f1c232">str</span>
             * password: <span style="color:#f1c232">str</span>
-    * Пример: `POST {API_URL}/auth/signIn}`
+    * Пример: `POST Метод убран по просьбе администратора проекта.}`
 * Ответ:
     * Тип: json
     * Res: 
@@ -164,7 +164,7 @@ FIREBASE = "/auth/firebase"
 
 ```
 
-### **/auth/firebase**
+### **Метод убран по просьбе администратора проекта.**
 
 Метод для <_err_found_data>
 
@@ -183,29 +183,8 @@ FIREBASE = "/auth/firebase"
   "topicName": "<_err_found_data> string"
 }
 ```
-Интересный факт, приложение после авторизации сразу же посылает /auth/firebase.
+Интересный факт, приложение после авторизации сразу же посылает Метод убран по просьбе администратора проекта..
 <br>А при первом открытии:
 ```
-POST /v1/projects/anime-ad-eb8b3/installations HTTP/1.1
-Host: firebaseinstallations.googleapis.com
-Content-Type: application/json
-Accept: application/json
-Content-Encoding: gzip
-Cache-Control: no-cache
-X-Android-Package: com.swiftsoft.anixartd
-x-firebase-client: kotlin/1.5.10 android-target-sdk/30 device-brand/samsung fire-fst/22.1.2 fire-core/19.5.0 device-name/b70abab fire-iid/21.1.0 device-model/a70q fire-android/30 android-installer/com.google.android.packageinstaller android-min-sdk/21 fire-fcm/20.1.7_1p android-platform/ fire-installations/16.3.5 fire-auth/20.0.4
-x-firebase-client-log-type: 3
-X-Android-Cert: 61ED377E85D386A8DFEE6B864BD85B0BFAA5AF81
-x-goog-api-key: AIzaSyBFPckWOsp0MEqb_1gwszvM1ILdUixM-uw
-User-Agent: Dalvik/2.1.0 (Linux; U; Android 10; SM-A705FN Build/10)
-Connection: Keep-Alive
-Accept-Encoding: gzip
-Content-Length: 140
-        
-{
-	"fid": "dsVzIpPOQE-2lGUlSee_DX",
-	"appId": "1:983926366374:android:86c070d43af9c4cd0b5467",
-	"authVersion": "FIS_v2",
-	"sdkVersion": "a:16.3.5"
-}
+Метод убран по просьбе администратора проекта.
 ```

@@ -15,7 +15,7 @@ from .request_handler import AnixRequestsHandler
 
 class AnixReleaseBase(AnixRequestsHandler):
     def __init__(self, user):
-        super(AnixReleaseBase, self).__init__(user.token, user._session)
+        super(AnixReleaseBase, self).__init__(user.token, user.session)
         self.id = user.id
         self._get = super().get
         self._post = super().post

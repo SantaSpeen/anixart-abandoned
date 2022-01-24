@@ -80,19 +80,19 @@ API_URL = "https://api.anixart.tv"
 ################   AUTH   ################
 
 # POST
-SING_UP = "/auth/signUp"
-SING_UP_VERIFY = "/auth/verify"  # {vkAccessToken, googleIdToken}
-SING_IN = "/auth/signIn"
-FIREBASE = "/auth/firebase"
+SING_UP = None
+SING_UP_VERIFY = None
+SING_IN = None
+FIREBASE = None
 
 # Not Cheked
 # POST
-AUTH_RESEND = "/auth/resend"  # {login, email, password, vkAccessToken, googleIdToken, hash}
-AUTH_RESTORE = "/auth/restore"  # {data}
-AUTH_RESTORE_RESEND = "/auth/restore/resend"  # {data, password, hash}
-AUTH_RESTORE_VERIFY = "/auth/restore/verify"  # {data, password, hash, code}
-AUTH_SING_IN_WITH_GOOGLE = "/auth/google"  # {googleIdToken} or {login, email, googleIdToken}
-AUTH_SING_IN_WITH_VK = "/auth/vk"  # {vkAccessToken}
+AUTH_RESEND = None
+AUTH_RESTORE = None
+AUTH_RESTORE_RESEND = None
+AUTH_RESTORE_VERIFY = None
+AUTH_SING_IN_WITH_GOOGLE = None
+AUTH_SING_IN_WITH_VK = None
 
 ################ PROFILE ################
 # TODO PROFILE: SETTINGS, SETTINGS_RELEASE, SETTINGS_RELEASE_FIRST,

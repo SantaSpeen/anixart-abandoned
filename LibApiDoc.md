@@ -17,9 +17,9 @@
     - id -> `anix.me.get_id()`
 
 * Auth `anix.auth`:
-    - Sing In -> Do not use this method. Lib auto singing in.
-    - Sing Up -> Do not use this method. Lib auto singing up. Need real email!
-    - Firebase -> `anix.auth.firebase()`
+    - <_read_info> -> <_read_info>
+    - <_read_info> -> <_read_info>
+    - <_read_info> -> <_read_info>
     - Change password -> `anix.auth.change_password(old_pass, new_pass)`; Change password.
 
 * Profile `anix.profile`:

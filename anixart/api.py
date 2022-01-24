@@ -13,17 +13,17 @@ import requests
 from .auth import AnixAuth
 from .collections import AnixCollection
 from .endpoints import TYPE, HISTORY, TOGGLES
-from .errors import AnixInitError, AnixAuthError
+from .errors import AnixInitError
 from .profile import AnixProfile
 from .release import AnixRelease
 from .request_handler import AnixRequestsHandler
 
-_lc = 6
+_lc = 10
 _log_name = "file:%-29s -> %s" % ("<anixart.api:%-4i>", "%s")
 
 
 class AnixUserAccount:
-    def __init__(self, login, password, need_reg=False, email="", config_file="anixart_login.json", **kwargs):
+    def __init__(self, config_file="anixart_login.json", *args, **kwargs):
         """
         Info:
 
@@ -59,32 +59,36 @@ class AnixUserAccount:
         :return: :class:`AnixUserAccount <anixart.api.AnixUserAccount>` object
         """
         self.__kwargs = kwargs
+        self.debug = False
         log_level = logging.CRITICAL
         log_format = '[%(name)-43s] %(levelname)-5s: %(message)s'
+        if kwargs.get("debug"):
+            log_level = logging.DEBUG
+            self.debug = True
+            if kwargs.get("logformat") is not None:
+                log_format = kwargs.get("logformat")
         if kwargs.get("loglevel") is not None:
             log_level = kwargs.get("loglevel")
-        if kwargs.get("logformat") is not None:
-            log_format = kwargs.get("logformat")
         logging.basicConfig(level=log_level, format=log_format)
         self.__log = logging.getLogger("anixart.api.AnixUserAccount")
 
         self.__log.debug(_log_name, 70, "__init__ - INIT")
 
-        self.login = login
-        self.password = password
-        if not isinstance(login, str) or not isinstance(password, str):
-            raise AnixAuthError("Use normal auth data. In string.")
+        self.login = 'login'
+        self.password = 'password'
+        # if not isinstance(login, str) or not isinstance(password, str):
+        #     raise AnixAuthError("Use normal auth data. In string.")
         self.token = None
         self.id = None
 
-        self.need_reg = need_reg
-        if need_reg:
-            if email is None:
-                raise AnixAuthError("Pls input mail.")
-        self.mail = email
+        self.need_reg = False
+        # if need_reg:
+        #     if email is None:
+        #         raise AnixAuthError("Pls input mail.")
+        self.mail = 'email'
         self.config_file = config_file
 
-        self._session = requests.Session()
+        self.session = requests.Session()
         self.__log.debug(_log_name, 87, f"{str(self)}")
         self.__log.debug(_log_name, 88, "__init__() - OK")
 
@@ -107,7 +111,7 @@ class AnixUserAccount:
 
 class AnixOther(AnixRequestsHandler):
     def __init__(self, user: AnixUserAccount):
-        super(AnixOther, self).__init__(user.token, user._session)
+        super(AnixOther, self).__init__(user.token, user.session)
         self.__get = super().get
 
     def type(self):
@@ -170,6 +174,8 @@ class AnixAPI:
         self.__collection = None
         self.__other = None
         self.__release = None
+        if user.debug:
+            self.request = AnixRequestsHandler(user.token, user.session, "anixart.api.AnixAPI")
 
         self.__log.debug(_log_name, 167+_lc, "__init__ - OK.")
 

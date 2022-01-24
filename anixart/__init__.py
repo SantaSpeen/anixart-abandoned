@@ -31,7 +31,7 @@ from .__version__ import __version__, __url__, __build__, __title__, __author__,
 from .api import AnixUserAccount, AnixAPI
 from .endpoints import AnixComment, AnixProfileVotedSort, AnixList
 
-version_secret = "65f1c508f136b74025215a95a1e551bc5261b4dfb68258465db34d7cd666464a"
+version_secret = "9e771b85bfa320693172fe2d067536bf5325dbcc8e5524d121d8637a21b59962"
 based_on = 21101018
 
 
