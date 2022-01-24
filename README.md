@@ -13,7 +13,7 @@ Pip:
 [![PyPI download month](https://img.shields.io/pypi/dm/anixart.svg)](https://pypi.python.org/pypi/anixart/)
 [![PyPI download week](https://img.shields.io/pypi/dd/anixart.svg)](https://pypi.python.org/pypi/anixart/)
 
-
+* ### [Discord chat](https://discord.gg/xC6MU77Vsb)
 
 **Документация на русском:** [ТЫК](https://anixart.readthedocs.io/ "тык")
 
