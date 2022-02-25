@@ -20,9 +20,6 @@
 
 Базовый класс -> `anix.auth`
 
-- <span style="color:#7CD9B4">●</span> <_err_build> -> `anix.<_err_build>` ;'';'
-- <span style="color:#7CD9B4">●</span> <_err_build> -> `anix.<_err_build>`;asdfaf dx
-- <span style="color:#7CD9B4">●</span> <_err_build> -> `anix.auth.<_err_build>`; 
 - <span style="color:#7CD9B4">●</span> Change password -> `anix.auth.change_password(old_pass, new_pass)`; Смена пароля.
 
 ### Profile
