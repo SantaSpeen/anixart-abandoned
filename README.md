@@ -29,7 +29,7 @@ Pip:
 
 Via pip:
 
-* `pip install -U anixart`
+* `pip install -U anixart==0.3.5`
 
 ### Use:
 
